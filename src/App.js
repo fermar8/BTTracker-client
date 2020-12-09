@@ -11,6 +11,8 @@ import Private from './pages/Private';
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
 
+import Calendar from './components/CalendarPage';
+
 
 
 class App extends Component {
@@ -22,7 +24,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Home} />
 
-
+          <AnonRoute exact path="/calendar" component={Calendar} />
           <AnonRoute exact path="/signup" component={Signup} />
           <AnonRoute exact path="/login" component={Login} />
 

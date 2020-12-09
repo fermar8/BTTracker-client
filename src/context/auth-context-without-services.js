@@ -22,10 +22,10 @@ class AuthProvider extends React.Component {
       });
   }
 
-  signup = (username, password) => {
+  signup = (username, team, teamImage, coachImage, email, password) => {
     axios.post(
       'http://localhost:5000/auth/signup', 
-      { username, password }, 
+      { username, team, teamImage, coachImage, email, password }, 
       { withCredentials: true }
     )
     .then((response) => {
