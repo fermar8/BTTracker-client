@@ -3,14 +3,14 @@ import axios from "axios";
 class AuthService {
   constructor() {
     this.auth = axios.create({
-      baseURL: "http://localhost:5000",
+      baseURL: "http://localhost:4000",
       withCredentials: true
     });
   }
 
-  signup( username, team, teamImage, coachImage, email, password ) {
+  signup( username, team, email, password ) {
     const pr = this.auth
-      .post("/auth/signup", { username, team, teamImage, coachImage, email, password })
+      .post("/auth/signup", { username, team, email, password })
       .then((response) => response.data);
       // .then(({ data }) => data); // Shorter way of `.then((response) => response.data);`
 
