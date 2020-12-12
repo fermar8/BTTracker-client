@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import EditStats from './../components/EditStats'
 import { withRouter } from 'react-router'
+import './../components/ShowEditStats'
 
 
 class Stats extends Component {
   constructor(props){
       super(props);
       this.state = { 
-          isDisplayed: true,
+          isDisplayed: false,
           stats: []
       }
   }
@@ -25,17 +27,25 @@ class Stats extends Component {
         .catch((err) => console.log(err))
 }
   
+  showStats = () => {
+      this.setState({
+          isDisplayed: !this.state.isDisplayed,
+      });
+  }
 
-  handleChange = (event) => {
+
+  handleChange = (event) => { 
       const {name, value} = event.target;
       this.setState({[name]: value});
   }
 
   render(){
     return(
+     <main className="main">
         <div>
         {this.state.stats.map((performance) => {
   return (
+    <div>
     <table key={performance._id}> 
       <tr>
           <th>Player</th>
@@ -65,9 +75,15 @@ class Stats extends Component {
           <td><button onClick={this.showStats}>Edit</button></td>
       </tr>
     </table>
+    
+            {this.state.isDisplayed ? 
+                <EditStats/> : null}
+       </div>  
         )
    })}
+            
     </div>
+ </main>
     )
   }
 }
