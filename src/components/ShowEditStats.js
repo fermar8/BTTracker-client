@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router'
 
 
 class Stats extends Component {
@@ -32,36 +33,43 @@ class Stats extends Component {
 
   render(){
     return(
-      <div className="add-player-form">
-        <p>Add new player</p>
-        <form onSubmit={this.handleFormSubmit}>
-          
-          <label>Name:</label>
-          <input type="text" 
-            name="name" 
-            value={this.state.name} 
-            onChange={ (e) => this.handleChange(e) }
-          />
-          
-          <label>Number:</label>
-          <input type="text" 
-            name="number" 
-            value={this.state.number} 
-            onChange={ (e) => this.handleChange(e) } 
-          />
-
-          <label>Email:</label>
-          <input type="text"
-            name="email" 
-            value={this.state.email} 
-            onChange={ (e) => this.handleChange(e) } 
-          />
-          
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
+        <div>
+        {this.state.stats.map((performance) => {
+  return (
+    <table key={performance._id}> 
+      <tr>
+          <th>Player</th>
+          <th>Feedback</th>
+          <th>FT</th>
+          <th>FTA</th>
+          <th>FT%</th>
+          <th>2P</th>
+          <th>2PA</th>
+          <th>2P%</th>
+          <th>3P</th>
+          <th>3PA</th>
+          <th>3P%</th>
+      </tr>
+      <tr>
+          <td>{performance.player.name}</td>
+          <td>{performance.coachComments}</td>
+          <td>{performance.ftConverted}</td>
+          <td>{performance.ftAttempted}</td>
+          <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td>
+          <td>{performance.twoPConverted}</td>
+          <td>{performance.twoPAttempted}</td>
+          <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(3) + '%'}</td>
+          <td>{performance.threePConverted}</td>
+          <td>{performance.threePAttempted}</td>
+          <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td>
+          <td><button onClick={this.showStats}>Edit</button></td>
+      </tr>
+    </table>
+        )
+   })}
+    </div>
     )
   }
 }
 
-export default Stats;
+export default withRouter(Stats);
