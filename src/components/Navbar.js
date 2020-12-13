@@ -28,7 +28,7 @@ class Navbar extends Component {
         <p>Calendar</p><CalendarTodayIcon/>
         </Link>
         
-        <Link to={'/team'} id='stats-btn'>
+        <Link to={'/team/stats'} id='stats-btn'>
         <p>Stats</p><EqualizerIcon/>
         </Link>
 

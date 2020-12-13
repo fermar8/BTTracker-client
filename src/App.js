@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Team from './pages/Team';
 import Calendar from './pages/CalendarPage';
 import TrainingPage from './pages/TrainingPage'
+import TeamStats from './pages/TeamStats'
 
 import AnonRoute from './components/AnonRoute';
 import PrivateRoute from './components/PrivateRoute';
@@ -30,6 +31,8 @@ class App extends Component {
           <PrivateRoute exact path='/calendar'component={Calendar} />
           <PrivateRoute exact path='/training/:id' component={TrainingPage}/>
           <PrivateRoute exact path="/team" component={Team} />
+          <PrivateRoute exact path='/team/stats' component={TeamStats}/>
+
         </Switch>
       </div>
     );

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import axios from 'axios';
-import { Link } from 'react-router-dom'
 import { withAuth } from './../context/auth-context';
 import './../pages/TrainingPage.css'
-import Stats from './../components/ShowEditStats'
+import TrainingStats from '../components/TrainingStats'
 //import teamPageService from './../lib/team-page-service';
 
 
@@ -19,7 +17,7 @@ class TrainingPage extends Component {
         return (
         <main className="main">
          <div>
-            <Stats/>
+            <TrainingStats/>
             
             </div>
         </main>

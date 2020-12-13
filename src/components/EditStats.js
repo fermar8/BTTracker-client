@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { withRouter } from 'react-router'
-import './../components/ShowEditStats'
+import './TrainingStats'
+
+
+
+//get training/id and populate submit buttons form
+
 
 class EditStats extends Component {
     constructor(props){

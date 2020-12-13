@@ -37,8 +37,6 @@ class CalendarPage extends Component {
       .catch( (err) => console.log(err) )
 
     }
-
-    editTraining = (event) =>{}   
    
 
 
@@ -53,10 +51,9 @@ render() {
   
   const idToString = trainingId.toString();
   
-  console.log(dateToString, idToString)
 
   let button;
-  if (trainingDate.includes(this.state.date)) {
+  if (dateToString.includes(this.state.date)) {
   
     button = <div>
               <p>You have a training scheduled for this date</p> 
@@ -78,13 +75,7 @@ render() {
         onChange={this.onChange}
       />
 <>
-{this.state.trainings.map((training) => {
-          return (
-            <div key={training._id}> 
-              <p>{training.date}</p>
-            </div>
-          )
-        } )}
+      <p>{dateToString}</p>
         {button}
     </>
 

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import EditStats from './../components/EditStats'
+import EditStats from './EditStats'
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
-import './../components/ShowEditStats'
 
 
-class Stats extends Component {
+//Try to make a single button for every EditStats form
+
+class TrainingStats extends Component {
   constructor(props){
       super(props);
       this.state = { 
@@ -32,7 +34,13 @@ class Stats extends Component {
           isDisplayed: !this.state.isDisplayed,
       });
   }
-
+ 
+  deleteTraining = () => {
+      const { id } = this.props.match.params
+      axios.delete(`http://localhost:4000/api/training/${id}`)
+        .then( () => this.props.history.push('/calendar') )
+        .catch( (err) => console.log(err))
+  }
 
   handleChange = (event) => { 
       const {name, value} = event.target;
@@ -47,6 +55,7 @@ class Stats extends Component {
   return (
     <div>
     <table key={performance._id}> 
+     <tbody>
       <tr>
           <th>Player</th>
           <th>Feedback</th>
@@ -61,7 +70,9 @@ class Stats extends Component {
           <th>3P%</th>
       </tr>
       <tr>
+        <Link to={`/team/${performance.player._id}`} id='stats-btn'>
           <td>{performance.player.name}</td>
+        </Link>
           <td>{performance.coachComments}</td>
           <td>{performance.ftConverted}</td>
           <td>{performance.ftAttempted}</td>
@@ -74,6 +85,7 @@ class Stats extends Component {
           <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td>
           <td><button onClick={this.showStats}>Edit</button></td>
       </tr>
+      </tbody>
     </table>
     
             {this.state.isDisplayed ? 
@@ -81,11 +93,11 @@ class Stats extends Component {
        </div>  
         )
    })}
-            
+            <button onClick={this.deleteTraining}>Delete Training</button>
     </div>
  </main>
     )
   }
 }
 
-export default withRouter(Stats);
+export default withRouter(TrainingStats);
