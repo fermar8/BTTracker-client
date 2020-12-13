@@ -3,7 +3,10 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 import { withAuth } from './../context/auth-context';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { StyledButton } from './../styles/button';
+import { Link } from 'react-router-dom';
+import './../pages/Calendar.css';
+
  
 class CalendarPage extends Component {
     state = {
@@ -56,22 +59,24 @@ render() {
   if (dateToString.includes(this.state.date)) {
   
     button = <div>
-              <p>You have a training scheduled for this date</p> 
+              <p className="calendar-message">You have a training scheduled for this date</p> 
               <Link to={`/training/${idToString}`}>
-              <button>Edit training</button>
+              <StyledButton>Edit training</StyledButton>
               </Link>   
              </div>
   } else {
     button = <div>
-              <p>Schedule a training for this date</p>
-              <button onClick={this.addTraining}>Add training</button>
+              <p className="calendar-message">Schedule a training for this date</p>
+              <StyledButton onClick={this.addTraining}>Add training</StyledButton>
              </div>
   }
      
   
   return (
+  <main className="main">
+   <div className="main-div">
     <div>
-      <Calendar
+      <Calendar className="calendar"
         onChange={this.onChange}
       />
 <>
@@ -81,6 +86,8 @@ render() {
 
 
     </div>
+   </div>
+  </main>
   );
  }
 }

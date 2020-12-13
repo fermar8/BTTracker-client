@@ -21,18 +21,18 @@ class Navbar extends Component {
       <div className="navbar">
         
         <Link to={'/team'} id='team-btn'>
-         <p>{this.props.user.team}</p><SportsBasketballIcon/>
+         <p className="navbar-p">{this.props.user.team}</p><SportsBasketballIcon/>
         </Link>
         
         <Link to={'/calendar'} id='calendar-btn'>
-        <p>Calendar</p><CalendarTodayIcon/>
+        <p className="navbar-p">Calendar</p><CalendarTodayIcon/>
         </Link>
         
         <Link to={'/team/stats'} id='stats-btn'>
-        <p>Stats</p><EqualizerIcon/>
+        <p className="navbar-p">Stats</p><EqualizerIcon/>
         </Link>
 
-        <Link id='logout-btn' to={'/'} onClick={this.props.logout}><p>Exit</p><ExitToAppIcon/></Link>
+        <Link id='logout-btn' to={'/'} onClick={this.props.logout}><p className="navbar-p">Exit</p><ExitToAppIcon/></Link>
          
       </div>
         ) : null }

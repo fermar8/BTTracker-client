@@ -3,6 +3,7 @@ import axios from 'axios';
 import EditStats from './EditStats'
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
+import {StyledButton} from './../styles/button'
 
 
 //Try to make a single button for every EditStats form
@@ -49,13 +50,10 @@ class TrainingStats extends Component {
 
   render(){
     return(
-     <main className="main">
-        <div>
-        {this.state.stats.map((performance) => {
-  return (
+  <main className="main">
     <div>
-    <table key={performance._id}> 
-     <tbody>
+     <table> 
+      <thead>
       <tr>
           <th>Player</th>
           <th>Feedback</th>
@@ -68,10 +66,15 @@ class TrainingStats extends Component {
           <th>3P</th>
           <th>3PA</th>
           <th>3P%</th>
-      </tr>
-      <tr>
+          <th></th>
+       </tr>
+      </thead>
+      <tbody>
+    {this.state.stats.map((performance) => {
+  return (
+      <tr key={performance._id}>
         <Link to={`/team/${performance.player._id}`} id='stats-btn'>
-          <td>{performance.player.name}</td>
+          <td style={{fontWeight: "bold", color: "black"}}>{performance.player.name}</td>
         </Link>
           <td>{performance.coachComments}</td>
           <td>{performance.ftConverted}</td>
@@ -84,16 +87,17 @@ class TrainingStats extends Component {
           <td>{performance.threePAttempted}</td>
           <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td>
           <td><button onClick={this.showStats}>Edit</button></td>
+           
       </tr>
-      </tbody>
-    </table>
-    
-            {this.state.isDisplayed ? 
-                <EditStats/> : null}
-       </div>  
+   
+
         )
    })}
-            <button onClick={this.deleteTraining}>Delete Training</button>
+        </tbody>
+    </table>
+       {this.state.isDisplayed ? 
+                <EditStats/> : null}
+            <StyledButton onClick={this.deleteTraining}>Delete Training</StyledButton>
     </div>
  </main>
     )

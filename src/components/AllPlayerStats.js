@@ -55,11 +55,9 @@ render() {
        </div>
 
            <div>
-               {filterFinal.map((performance) => {
-     return (
-       <div key={performance.name}>
-       <table> 
-        <tbody>
+               
+       <table>
+        <thead>
          <tr>
              <th>Player</th>
              <th>FT</th>
@@ -72,8 +70,13 @@ render() {
              <th>3PA</th>
              <th>3P%</th>
          </tr>
-         <tr>
-             <td>{performance.name}</td>
+        </thead>
+        <tbody>
+        {filterFinal.map((performance) => {
+     return (
+       
+         <tr key={performance.name}>
+             <td style={{fontWeight: "bold"}}>{performance.name}</td>
              <td>{performance.ftConverted}</td>
              <td>{performance.ftAttempted}</td>
              <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td>
@@ -84,13 +87,12 @@ render() {
              <td>{performance.threePAttempted}</td>
              <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td>
              
-         </tr>
-        </tbody>
-       </table>
-          
-          </div>  
+         </tr>    
+           
            )
       })}
+            </tbody>
+        </table>
 
        </div>
     </main>

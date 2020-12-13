@@ -1,0 +1,39 @@
+
+.main-div{
+    max-width: 650px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); 
+
+}
+
+form {
+    max-width: 650px;
+    overflow: hidden;
+}
+
+form input {
+    width: 23px;
+    height: 17px;
+}
+
+table{
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    width: 650px;
+    border-radius: 5px 5px 0 0;
+  }
+    thead tr{
+    background-color: #C9082A;
+    color: white;
+    font-weight: bold;
+    }
+  
+    tbody tr{
+      border-bottom: 1.75px solid #C9082A;
+
+    
+  
+    }
+    tbody tr:nth-of-type(even) {
+        background-color: white;
+    }

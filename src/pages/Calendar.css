@@ -1,0 +1,27 @@
+.main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    
+}
+
+.main-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.calendar {
+    width: 650px;
+    height: 300px;
+    font-size: 1rem;
+
+}
+
+.calendar-message {
+    font-size: 1.3rem;
+    font-weight: bold;
+
+}
+

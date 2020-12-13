@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { withRouter } from 'react-router'
-import './TrainingStats'
-
+import TrainingStats from './../components/TrainingStats'
+import './../components/EditStats.css'
 
 
 //get training/id and populate submit buttons form
@@ -51,25 +51,36 @@ class EditStats extends Component {
   
     render(){      
       return (
-       <div>
-            <form onSubmit={this.handleFormSubmit}>
-              <label>Coach comments</label>
-              <textarea type="text" name="comments"
-              value= "" onChange= { (e) => this.handleChange(e) } />
-              <label>FT</label>
-              <input type="number" name="ft" value= "0" onChange= { (e) => this.handleChange(e) }/>
-              <label>FTA</label>
-              <input type="number" name="fta" value= "0" onChange= { (e) => this.handleChange(e) }/>
-              <label>2P</label>
-              <input type="number" name="two" value= "0" onChange= { (e) => this.handleChange(e) }/>
-              <label>2PA</label>
-              <input type="number" name="twoatt" value= "0" onChange= { (e) => this.handleChange(e) }/>
-              <label>3P</label>
-              <input type="number" name="three" value= "0" onChange= { (e) => this.handleChange(e) }/>
-              <label>3PA</label>
-              <input type="number" name="threeatt" value= "0" onChange= { (e) => this.handleChange(e) }/>
-              <button type="submit">Submit</button>
-            </form>     
+       <div className="main-div">
+         <form onSubmit={this.handleFormSubmit}>
+            <table>
+             <thead>
+              <tr>
+                  <th>Comments</th>
+                  <th>FT</th>
+                  <th>FTA</th>
+                  <th>2P</th>
+                  <th>2PA</th>
+                  <th>3P</th>
+                  <th>3PA</th>
+                  <th></th>
+              </tr>
+             </thead>
+             <tbody>
+              <tr>
+                <td><textarea type="text" name="comments"
+                value= "" onChange= { (e) => this.handleChange(e) } /></td>
+                <td><input type="number" name="ft" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><input type="number" name="fta" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><input type="number" name="two" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><input type="number" name="twoatt" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><input type="number" name="three" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><input type="number" name="threeatt" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><button type="submit">Submit</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </form>     
         </div>
         )
   }
