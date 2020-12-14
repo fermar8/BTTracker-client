@@ -16,6 +16,7 @@ class TrainingPage extends Component {
     render() {
         return (
         <main className="main">
+         
          <div>
             <TrainingStats/>
             

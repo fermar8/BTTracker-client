@@ -5,43 +5,25 @@ import TrainingStats from './../components/TrainingStats'
 import './../components/EditStats.css'
 
 
-//get training/id and populate submit buttons form
-
 
 class TrainingDetails extends Component {
     constructor(props){
         super(props);
-        this.state = { attendance: true, 
-            coachComments: "", 
-            ftAttempted: "",
-            ftConverted: "",
-            twoPAttempted: "",
-            twoPConverted: "",
-            threePAttempted: "",
-            threePConverted: "" };
+        this.state = { 
+          exercises: "",
+          notes: ""
+         };
     }
 
     handleFormSubmit(event) {
         event.preventDefault();
-        const playerId = this.props.match.playerId;
-
-        const {attendance, coachComments, ftAttempted, ftConverted,
-        twoPAttempted, twoPConverted, threePAttempted, threePconverted} = this.state;    
         
-        axios.put(`http://localhost:4000/api/performance/${playerId}`, 
-                {attendance, coachComments, ftAttempted, ftConverted,
-                twoPAttempted, twoPConverted, threePAttempted, threePconverted}, 
-                {withCredentials: true})
+        const {id} = this.props.match.params
+        
+        axios.put(`http://localhost:4000/api/performance/${id}`, 
+          {exercises: this.state.exercises, notes: this.state.notes})
         .then( () => {
-          // this.props.getData(); // leave this comment - we will used it later
-          this.setState({attendance: true, 
-            coachComments: "", 
-            ftAttempted: "",
-            ftConverted: "",
-            twoPAttempted: "",
-            twoPConverted: "",
-            threePAttempted: "",
-            threePConverted: "" });
+          this.setState({exercises: "", notes: ""});
         })
         .catch( (err) => console.log(err) )
       }
@@ -52,42 +34,32 @@ class TrainingDetails extends Component {
     }
   
     render(){      
+
+      console.log(this.props)
+
       return (
-       <div className="main-div">
-         <form onSubmit={this.handleFormSubmit}>
-            <table>
-             <thead>
-              <tr>
-                  <th>Comments</th>
-                  <th>FT</th>
-                  <th>FTA</th>
-                  <th>2P</th>
-                  <th>2PA</th>
-                  <th>3P</th>
-                  <th>3PA</th>
-                  <th></th>
-              </tr>
-             </thead>
-             <tbody>
-              <tr>
-                <td><textarea type="text" name="comments"
-                value= "" onChange= { (e) => this.handleChange(e) } /></td>
-                <td><input type="number" name="ft" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="fta" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="two" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="twoatt" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="three" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="threeatt" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
-                <td><button type="submit">Submit</button></td>
-                </tr>
-              </tbody>
-            </table>
-          </form>     
-        </div>
+        <form className="form-inline" onSubmit={this.handleFormSubmit}>
+          
+        <label>Exercises:</label>
+        <textarea type="text" 
+          name="name" 
+          value={this.state.name} 
+          onChange={ (e) => this.handleChange(e) }
+        />
+        
+        <label>Notes:</label>
+        <input className="number" type="text" 
+          name="number" 
+          value={this.state.number} 
+          onChange={ (e) => this.handleChange(e) } 
+        />
+        
+        <button type="submit">Edit</button>
+      </form>
         )
   }
 
 }
 
 
-//export default withRouter(TrainingDetails);
+export default withRouter(TrainingDetails);

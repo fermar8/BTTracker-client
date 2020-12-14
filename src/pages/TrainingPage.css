@@ -4,3 +4,8 @@
     justify-content: center;
     text-align: center;
 }
+
+.details {
+
+    float: left;
+ }

@@ -4,6 +4,7 @@ import EditStats from './EditStats'
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import {StyledButton} from './../styles/button'
+import TrainingDetails from './TrainingDetails'
 
 
 //Try to make a single button for every EditStats form
@@ -13,8 +14,14 @@ class TrainingStats extends Component {
       super(props);
       this.state = { 
           isDisplayed: false,
+          showEdit: false,
+          showDetails: true,
           performanceToEdit: {},
-          stats: []
+          stats: [],
+          date: "",
+          exercises: "",
+          notes: "",
+          id: ""
       }
   }
 
@@ -23,10 +30,11 @@ class TrainingStats extends Component {
 
     axios.get(`http://localhost:4000/api/training/${id}`, {withCredentials: true})
         .then( (response ) => {
+
             const stats = response.data.stats
             const training = response.data;
             const {date, exercises, notes} = training;
-            this.setState({date, exercises, notes, stats: [...stats]});
+            this.setState({date, exercises, notes, stats: [...stats], id: training._id});
         })
         .catch((err) => console.log(err))
 }
@@ -36,6 +44,13 @@ class TrainingStats extends Component {
           isDisplayed: !this.state.isDisplayed,
           performanceToEdit: performance
       });
+  }
+
+  showEdit = (e) => {
+    this.setState({
+      showEdit: !this.state.showEdit
+    })
+    this.setState({showDetails: !this.state.showDetails})
   }
  
   deleteTraining = () => {
@@ -51,8 +66,29 @@ class TrainingStats extends Component {
   }
 
   render(){
+
     return(
-  <main className="main">
+  
+  <div>
+
+<h2>{this.state.date}</h2>
+
+{this.state.showDetails  ?
+                <div className="details">
+                    <h3>Exercises: </h3>
+                    <p>{this.state.exercises}</p>
+
+                    <h3>Notes: </h3>
+                    <p>{this.state.notes}</p>
+
+                    <button onClick={(e) => this.showEdit (e)}>Edit Training</button>
+               </div> : null }
+
+
+{this.state.showEdit ?
+      <TrainingDetails details={this.state} id={this.id}/> : null }   
+    <main className="main">
+
     
     <div>
      <table> 
@@ -103,6 +139,7 @@ class TrainingStats extends Component {
             <StyledButton onClick={this.deleteTraining}>Delete Training</StyledButton>
     </div>
  </main>
+</div>
     )
   }
 }

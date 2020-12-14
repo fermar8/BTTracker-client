@@ -11,7 +11,7 @@ import './../pages/Calendar.css';
 class CalendarPage extends Component {
     state = {
         date: new Date().toLocaleDateString(),
-        trainings: []
+        trainings: [],
     }
 
     onChange = date => {
@@ -32,7 +32,7 @@ class CalendarPage extends Component {
 
     addTraining = (event) =>{
       event.preventDefault();
-      axios.post("http://localhost:4000/api/training", { /*trainingObj*/}, {withCredentials: true})
+      axios.post("http://localhost:4000/api/training", {exercises: "", notes: "", date: this.state.date}, {withCredentials: true})
       .then( (createdTraining) => {
         const trainingToState = this.trainings.push(createdTraining)
         this.setState({trainings: trainingToState});
@@ -93,6 +93,3 @@ render() {
 }
 
 export default withAuth(CalendarPage);
-
-
-     
