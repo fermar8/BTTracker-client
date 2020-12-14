@@ -14,7 +14,7 @@ class AllPlayerStats extends Component {
    }
 
 componentDidMount() {
-    axios.get(`http://localhost:4000/api/team/stats`)
+    axios.get(`http://localhost:4000/api/team/stats`, {withCredentials: true})
         .then( (response ) => {
             this.setState({data: [...response.data]});
         })

@@ -11,10 +11,10 @@ class Team extends Component {
   };
   
   componentDidMount() {
-    axios.get('http://localhost:4000/api/team')
+    axios.get('http://localhost:4000/api/team', {withCredentials: true})
       .then((response) => {
         console.log(response)
-        this.setState({ players: response.data})
+        this.setState({ players: response.data.players})
         console.log(this.state)
       })
   }

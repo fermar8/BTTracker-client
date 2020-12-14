@@ -11,7 +11,7 @@ class AddPlayer extends Component {
   handleFormSubmit = (event) => {
       event.preventDefault();
       const {name, number, email} = this.state;
-      axios.post("http://localhost:4000/api/players", { name, number, email })
+      axios.post("http://localhost:4000/api/players", { name, number, email }, {withCredentials: true})
       .then( () => {
         // this.props.getData(); // leave this comment - we will used it later
         this.setState({name: "", number: "", email: ""});
@@ -28,8 +28,7 @@ class AddPlayer extends Component {
   render(){
     return(
       <div className="add-player-form">
-        <p>Add new player</p>
-        <form onSubmit={this.handleFormSubmit}>
+        <form className="form-inline" onSubmit={this.handleFormSubmit}>
           
           <label>Name:</label>
           <input type="text" 
@@ -39,7 +38,7 @@ class AddPlayer extends Component {
           />
           
           <label>Number:</label>
-          <input type="text" 
+          <input className="number" type="text" 
             name="number" 
             value={this.state.number} 
             onChange={ (e) => this.handleChange(e) } 
@@ -52,7 +51,7 @@ class AddPlayer extends Component {
             onChange={ (e) => this.handleChange(e) } 
           />
           
-          <input type="submit" value="Submit" />
+          <button type="submit">Add</button>
         </form>
       </div>
     )

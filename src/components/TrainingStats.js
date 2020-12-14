@@ -13,6 +13,7 @@ class TrainingStats extends Component {
       super(props);
       this.state = { 
           isDisplayed: false,
+          performanceToEdit: {},
           stats: []
       }
   }
@@ -20,7 +21,7 @@ class TrainingStats extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
 
-    axios.get(`http://localhost:4000/api/training/${id}`)
+    axios.get(`http://localhost:4000/api/training/${id}`, {withCredentials: true})
         .then( (response ) => {
             const stats = response.data.stats
             const training = response.data;
@@ -30,15 +31,16 @@ class TrainingStats extends Component {
         .catch((err) => console.log(err))
 }
   
-  showStats = () => {
+  showStats = (performance) => {
       this.setState({
           isDisplayed: !this.state.isDisplayed,
+          performanceToEdit: performance
       });
   }
  
   deleteTraining = () => {
       const { id } = this.props.match.params
-      axios.delete(`http://localhost:4000/api/training/${id}`)
+      axios.delete(`http://localhost:4000/api/training/${id}`, {withCredentials: true})
         .then( () => this.props.history.push('/calendar') )
         .catch( (err) => console.log(err))
   }
@@ -51,6 +53,7 @@ class TrainingStats extends Component {
   render(){
     return(
   <main className="main">
+    
     <div>
      <table> 
       <thead>
@@ -86,7 +89,7 @@ class TrainingStats extends Component {
           <td>{performance.threePConverted}</td>
           <td>{performance.threePAttempted}</td>
           <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td>
-          <td><button onClick={this.showStats}>Edit</button></td>
+          <td><button onClick={(e) => this.showStats (performance)}>Edit</button></td>
            
       </tr>
    
@@ -96,7 +99,7 @@ class TrainingStats extends Component {
         </tbody>
     </table>
        {this.state.isDisplayed ? 
-                <EditStats/> : null}
+                <EditStats performanceToEdit={this.state.performanceToEdit}/> : null}
             <StyledButton onClick={this.deleteTraining}>Delete Training</StyledButton>
     </div>
  </main>

@@ -21,7 +21,7 @@ class CalendarPage extends Component {
     }
 
     componentDidMount() {
-      axios.get('http://localhost:4000/api/training')
+      axios.get('http://localhost:4000/api/training', {withCredentials: true})
         .then((response) => {
           this.setState({ trainings: response.data})
           console.log(this.state)
@@ -32,7 +32,7 @@ class CalendarPage extends Component {
 
     addTraining = (event) =>{
       event.preventDefault();
-      axios.post("http://localhost:4000/api/training")
+      axios.post("http://localhost:4000/api/training", { /*trainingObj*/}, {withCredentials: true})
       .then( (createdTraining) => {
         const trainingToState = this.trainings.push(createdTraining)
         this.setState({trainings: trainingToState});

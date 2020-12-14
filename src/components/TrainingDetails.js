@@ -8,7 +8,7 @@ import './../components/EditStats.css'
 //get training/id and populate submit buttons form
 
 
-class EditStats extends Component {
+class TrainingDetails extends Component {
     constructor(props){
         super(props);
         this.state = { attendance: true, 
@@ -23,16 +23,15 @@ class EditStats extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault();
-        const performanceId = this.props.performanceToEdit._id
+        const playerId = this.props.match.playerId;
 
         const {attendance, coachComments, ftAttempted, ftConverted,
-        twoPAttempted, twoPConverted, threePAttempted, threePConverted} = this.state;    
+        twoPAttempted, twoPConverted, threePAttempted, threePconverted} = this.state;    
         
-        axios.put(
-            `http://localhost:4000/api/performance/${performanceId}`, 
-            {attendance, coachComments, ftAttempted, ftConverted,
-            twoPAttempted, twoPConverted, threePAttempted, threePConverted}, 
-            {withCredentials: true})
+        axios.put(`http://localhost:4000/api/performance/${playerId}`, 
+                {attendance, coachComments, ftAttempted, ftConverted,
+                twoPAttempted, twoPConverted, threePAttempted, threePconverted}, 
+                {withCredentials: true})
         .then( () => {
           // this.props.getData(); // leave this comment - we will used it later
           this.setState({attendance: true, 
@@ -46,14 +45,6 @@ class EditStats extends Component {
         })
         .catch( (err) => console.log(err) )
       }
-
-    componentDidMount() {
-      const  {attendance, coachComments, ftAttempted, ftConverted,
-        twoPAttempted, twoPConverted, threePAttempted, threePConverted} = this.props.performanceToEdit;
-
-    this.setState({attendance, coachComments, ftAttempted, ftConverted,
-        twoPAttempted, twoPConverted, threePAttempted, threePConverted});
-    }
     
     handleChange = (event) => {
         const {name, value} = event.target;
@@ -61,10 +52,6 @@ class EditStats extends Component {
     }
   
     render(){      
-
-        const {attendance, coachComments, ftAttempted, ftConverted,
-        twoPAttempted, twoPConverted, threePAttempted, threePConverted} = this.state;  
-
       return (
        <div className="main-div">
          <form onSubmit={this.handleFormSubmit}>
@@ -83,14 +70,14 @@ class EditStats extends Component {
              </thead>
              <tbody>
               <tr>
-                <td><textarea type="text" name="coachComments"
-                value={coachComments} onChange= { (e) => this.handleChange(e) } /></td>
-                <td><input type="number" name="ftConverted" value={ftConverted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="ftAttempted" value={ftAttempted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="twoPConverted" value={twoPConverted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="twoPAttempted" value={twoPAttempted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="threePConverted" value={threePConverted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="threePAttempted" value={threePAttempted} onChange= { (e) => this.handleChange(e) }/></td>
+                <td><textarea type="text" name="comments"
+                value= "" onChange= { (e) => this.handleChange(e) } /></td>
+                <td><input type="number" name="ft" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><input type="number" name="fta" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><input type="number" name="two" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><input type="number" name="twoatt" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><input type="number" name="three" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
+                <td><input type="number" name="threeatt" value= "0" onChange= { (e) => this.handleChange(e) }/></td>
                 <td><button type="submit">Submit</button></td>
                 </tr>
               </tbody>
@@ -103,4 +90,4 @@ class EditStats extends Component {
 }
 
 
-export default withRouter(EditStats);
+//export default withRouter(TrainingDetails);
