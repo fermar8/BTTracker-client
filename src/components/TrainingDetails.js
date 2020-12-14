@@ -90,4 +90,4 @@ class TrainingDetails extends Component {
 }
 
 
-//export default withRouter(TrainingDetails);
+export default withRouter(TrainingDetails);

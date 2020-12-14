@@ -5,7 +5,11 @@ import './../components/Add-player.css'
 class AddPlayer extends Component {
   constructor(props){
       super(props);
-      this.state = { name: "", number: "", email: "" };
+      this.state = { 
+        name: "", 
+        number: "", 
+        email: "",
+        };
   }
    
   handleFormSubmit = (event) => {

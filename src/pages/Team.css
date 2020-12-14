@@ -1,6 +1,32 @@
-.team-div{
+.team-list{
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.rows {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.team-list .p {
+    padding-right: 10px;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.button {
+   width: 95px;
+   height: 27px;
+   background-color:#C9082A; 
+   color: white;
+   border-radius: 2px;
 }
