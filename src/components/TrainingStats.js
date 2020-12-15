@@ -17,24 +17,22 @@ class TrainingStats extends Component {
           showEdit: false,
           showDetails: true,
           performanceToEdit: {},
+          trainingToEdit: {},
           stats: [],
           date: "",
-          exercises: "",
-          notes: "",
-          id: ""
       }
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
-
     axios.get(`http://localhost:4000/api/training/${id}`, {withCredentials: true})
         .then( (response ) => {
-
             const stats = response.data.stats
             const training = response.data;
-            const {date, exercises, notes} = training;
-            this.setState({date, exercises, notes, stats: [...stats], id: training._id});
+            const {date} = training;
+            this.setState({date, 
+              stats: [...stats], 
+              trainingToEdit: response.data});
         })
         .catch((err) => console.log(err))
 }
@@ -67,6 +65,7 @@ class TrainingStats extends Component {
 
   render(){
 
+
     return(
   
   <div>
@@ -76,17 +75,17 @@ class TrainingStats extends Component {
 {this.state.showDetails  ?
                 <div className="details">
                     <h3>Exercises: </h3>
-                    <p>{this.state.exercises}</p>
+                    <p>{this.state.trainingToEdit.exercises}</p>
 
                     <h3>Notes: </h3>
-                    <p>{this.state.notes}</p>
+                    <p>{this.state.trainingToEdit.notes}</p>
 
                     <button onClick={(e) => this.showEdit (e)}>Edit Training</button>
                </div> : null }
 
 
 {this.state.showEdit ?
-      <TrainingDetails details={this.state} id={this.id}/> : null }   
+      <TrainingDetails trainingToEdit={this.state.trainingToEdit} /> : null }   
     <main className="main">
 
     
@@ -112,9 +111,8 @@ class TrainingStats extends Component {
     {this.state.stats.map((performance) => {
   return (
       <tr key={performance._id}>
-        <Link to={`/team/${performance.player._id}`} id='stats-btn'>
           <td style={{fontWeight: "bold", color: "black"}}>{performance.player.name}</td>
-        </Link>
+       
           <td>{performance.coachComments}</td>
           <td>{performance.ftConverted}</td>
           <td>{performance.ftAttempted}</td>
@@ -143,5 +141,7 @@ class TrainingStats extends Component {
     )
   }
 }
+
+//<Link to={`/team/${performance.player._id}`} id='stats-btn'> </Link>
 
 export default withRouter(TrainingStats);

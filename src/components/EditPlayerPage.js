@@ -19,7 +19,6 @@ class EditPlayer extends Component {
       const {name, number, email} = this.state;
       axios.put(`http://localhost:4000/api/players/${playerId}`, { name, number, email }, {withCredentials: true})
       .then( () => {
-        // this.props.getData(); // leave this comment - we will used it later
         this.setState({name: "", number: "", email: ""});
       })
       .catch( (err) => console.log(err) )

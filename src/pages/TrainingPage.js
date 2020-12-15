@@ -18,6 +18,8 @@ class TrainingPage extends Component {
         <main className="main">
          
          <div>
+
+         
             <TrainingStats/>
             
             </div>
