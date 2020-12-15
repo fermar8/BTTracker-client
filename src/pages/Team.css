@@ -6,9 +6,9 @@
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
+    
     justify-content: space-evenly;
+    display: table;
 }
 
 .rows {
@@ -23,10 +23,41 @@
     font-weight: bold;
 }
 
+.text td {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.head th {
+    font-size: 1.3rem;
+    padding: 10px;
+}
+
 .button {
+   margin: 0px 0px 0px 20px;
    width: 95px;
    height: 27px;
-   background-color:#C9082A; 
+   background-color:#17408B; 
    color: white;
-   border-radius: 2px;
+   border-radius: 5px;
+}
+
+ .button-delete {
+    margin: 0px 20px 0px 20px;
+    width: 120px;
+    height: 27px;
+    background-color:#C9082A; 
+    color: white;
+    border-radius: 5px;
+}
+
+.button-add {
+
+    margin: 30px 0px 0px 0px;
+    width: 150px;
+    height: 27px;
+    background-color: royalblue;
+    color: white;
+    border-radius: 5px;
+
 }

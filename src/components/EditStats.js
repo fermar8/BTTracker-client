@@ -18,7 +18,7 @@ class EditStats extends Component {
             threePConverted: "" };
     }
 
-    handleFormSubmit(event) {
+    handleFormSubmit = (event) => {
         event.preventDefault();
         const performanceId = this.props.performanceToEdit._id
 
@@ -31,6 +31,7 @@ class EditStats extends Component {
             twoPAttempted, twoPConverted, threePAttempted, threePConverted}, 
             {withCredentials: true})
         .then( () => {
+          this.props.getPerformances(); 
           this.setState({attendance: true, 
             coachComments: "", 
             ftAttempted: "",
@@ -38,7 +39,8 @@ class EditStats extends Component {
             twoPAttempted: "",
             twoPConverted: "",
             threePAttempted: "",
-            threePConverted: "" });
+            threePConverted: "",
+             });
         })
         .catch( (err) => console.log(err) )
       }

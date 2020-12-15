@@ -21,21 +21,24 @@ class CalendarPage extends Component {
     }
 
     componentDidMount() {
+      this.getTrainings()
+    }
+
+    getTrainings = () => {
       axios.get('http://localhost:4000/api/training', {withCredentials: true})
-        .then((response) => {
-          this.setState({ trainings: response.data})
-          console.log(this.state)
-        })
+      .then((response) => {
+        this.setState({ trainings: response.data})
+        console.log(this.state)
+      })
     }
 
 
 
     addTraining = (event) =>{
       event.preventDefault();
-      axios.post("http://localhost:4000/api/training", {exercises: "", notes: "", date: this.state.date}, {withCredentials: true})
+      axios.post("http://localhost:4000/api/training", {date: this.state.date}, {withCredentials: true})
       .then( (createdTraining) => {
-        const trainingToState = this.trainings.push(createdTraining)
-        this.setState({trainings: trainingToState});
+        this.getTrainings()
       })
       .catch( (err) => console.log(err) )
 
@@ -67,7 +70,7 @@ render() {
   } else {
     button = <div>
               <p className="calendar-message">Schedule a training for this date</p>
-              <StyledButton onClick={this.addTraining}>Add training</StyledButton>
+              <StyledButton  onClick={this.addTraining}>Add training</StyledButton>
              </div>
   }
      

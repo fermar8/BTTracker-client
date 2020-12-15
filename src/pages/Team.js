@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 import { withAuth } from './../context/auth-context';
 import AddPlayer from './../components/AddPlayerPage';
-import EditPlayer from './../components/EditPlayerPage'
+import EditPlayer from './../components/EditPlayerPage';
+import DeletePlayer from './../components/DeletePlayer'
 import './../pages/Team.css'
 //import teamPageService from './../lib/team-page-service';
 
@@ -12,16 +13,27 @@ class Team extends Component {
     players: [],
     displayEdit: false,
     displayAdd: false,
-    playerToEdit: {}
+    displayDelete: false,
+    playerToEdit: {},
+    playerToDelete: {},
+    team: ""
   };
   
-  componentDidMount() {
+
+  getPlayers = () => {
     axios.get('http://localhost:4000/api/team', {withCredentials: true})
-      .then((response) => {
-        console.log(response)
-        this.setState({ players: response.data.players})
-        console.log(this.state)
-      })
+    .then((response) => {
+      console.log(response)
+      this.setState({ players: response.data.players,
+        team: response.data.team, 
+        displayEdit: false, 
+        displayAdd: false, 
+        displayDelete: false})
+    })
+  }
+
+  componentDidMount() {
+    this.getPlayers()
   }
 
  
@@ -38,38 +50,63 @@ class Team extends Component {
       playerToEdit: player})
   }
 
+  showDelete(player) {
+    this.setState({
+      displayDelete: !this.state.displayDelete,
+      playerToDelete: player})
+  }
+
 
 
   render() {
     return (
+  
       <div>
 
-
-
       {this.state.displayAdd ?
-        <AddPlayer/> : null}
+        <AddPlayer getPlayers={this.getPlayers}/> : null}
       {this.state.displayEdit ?
-        <EditPlayer playerToEdit={this.state.playerToEdit} /> : null}
+        <EditPlayer getPlayers={this.getPlayers} playerToEdit={this.state.playerToEdit} /> : null}
+      {this.state.displayDelete ? 
+        <DeletePlayer getPlayers={this.getPlayers} playerToDelete={this.state.playerToDelete} /> : null}
         
 
       <div className="team-list">
-        <h1>Player List</h1>
-
-        <button className="button" onClick={this.showAdd}>Add Player</button>
+        <h1>Squad</h1>
+  
+        <main className="main">
+    
+    <div>
+     <table> 
+      <thead>
+      <tr className="head">
+          <th>Player</th>
+          <th>number</th>
+          <th>email</th>
+          <th></th>
+          <th></th>
+       </tr>
+      </thead>
+      <tbody>
 
         {this.state.players.map((player) => {
           return (
-           <div className="list">
-            <div className="rows" key={player._id}> 
-              <p className="p">{player.name} -</p>
-              <p className="p">{player.number} -</p>
-              <p className="p">{player.email}</p>
-               
-               <button className="button" onClick={(e) => this.showEdit (player)}>Edit Player</button>
-            </div>
-           </div>
-          )
-        } )}
+
+      <tr className="text" key={player._id}>
+          <td>{player.name}</td>
+          <td>{player.number}</td>
+          <td>{player.email}</td>
+          <td><button className="button" onClick={(e) => this.showEdit (player)}>Edit Player</button></td>
+          <td><button className="button-delete" onClick={(e) => this.showDelete (player)}>Delete Player</button></td>  
+      </tr>
+        )
+   })}
+        </tbody>
+    </table>
+    </div>
+ </main>
+
+        <button className="button-add" onClick={this.showAdd}>Add a new player</button>
       </div>
     </div>
     );

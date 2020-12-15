@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import EditStats from './EditStats'
+//import TrainingDetails from './TrainingDetails'
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import {StyledButton} from './../styles/button'
-import TrainingDetails from './TrainingDetails'
 
 
 //Try to make a single button for every EditStats form
@@ -14,41 +14,33 @@ class TrainingStats extends Component {
       super(props);
       this.state = { 
           isDisplayed: false,
-          showEdit: false,
-          showDetails: true,
           performanceToEdit: {},
-          trainingToEdit: {},
-          stats: [],
-          date: "",
+          stats: []
       }
   }
 
   componentDidMount() {
+    this.getPerformances()
+    
+}
+  
+  getPerformances = () => {
     const { id } = this.props.match.params;
+
     axios.get(`http://localhost:4000/api/training/${id}`, {withCredentials: true})
         .then( (response ) => {
             const stats = response.data.stats
             const training = response.data;
-            const {date} = training;
-            this.setState({date, 
-              stats: [...stats], 
-              trainingToEdit: response.data});
+            this.setState({ stats: [...stats], isDisplayed: false});
         })
         .catch((err) => console.log(err))
-}
-  
+  }
+
   showStats = (performance) => {
       this.setState({
           isDisplayed: !this.state.isDisplayed,
           performanceToEdit: performance
       });
-  }
-
-  showEdit = (e) => {
-    this.setState({
-      showEdit: !this.state.showEdit
-    })
-    this.setState({showDetails: !this.state.showDetails})
   }
  
   deleteTraining = () => {
@@ -65,29 +57,11 @@ class TrainingStats extends Component {
 
   render(){
 
+  console.log(this.state.trainingToEdit)
 
     return(
   
-  <div>
-
-<h2>{this.state.date}</h2>
-
-{this.state.showDetails  ?
-                <div className="details">
-                    <h3>Exercises: </h3>
-                    <p>{this.state.trainingToEdit.exercises}</p>
-
-                    <h3>Notes: </h3>
-                    <p>{this.state.trainingToEdit.notes}</p>
-
-                    <button onClick={(e) => this.showEdit (e)}>Edit Training</button>
-               </div> : null }
-
-
-{this.state.showEdit ?
-      <TrainingDetails trainingToEdit={this.state.trainingToEdit} /> : null }   
-    <main className="main">
-
+  <main className="main">
     
     <div>
      <table> 
@@ -111,8 +85,9 @@ class TrainingStats extends Component {
     {this.state.stats.map((performance) => {
   return (
       <tr key={performance._id}>
+        <Link to={`/team/${performance.player._id}`} id='stats-btn'>
           <td style={{fontWeight: "bold", color: "black"}}>{performance.player.name}</td>
-       
+        </Link>
           <td>{performance.coachComments}</td>
           <td>{performance.ftConverted}</td>
           <td>{performance.ftAttempted}</td>
@@ -133,15 +108,12 @@ class TrainingStats extends Component {
         </tbody>
     </table>
        {this.state.isDisplayed ? 
-                <EditStats performanceToEdit={this.state.performanceToEdit}/> : null}
+                <EditStats getPerformances={this.getPerformances} performanceToEdit={this.state.performanceToEdit}/> : null}
             <StyledButton onClick={this.deleteTraining}>Delete Training</StyledButton>
     </div>
  </main>
-</div>
     )
   }
 }
-
-//<Link to={`/team/${performance.player._id}`} id='stats-btn'> </Link>
 
 export default withRouter(TrainingStats);

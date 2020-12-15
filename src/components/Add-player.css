@@ -1,50 +1,59 @@
 .add-player-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
 }
 
 .add-player-form .add-player {
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding-right: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-right: 15px;
 
 }
 
 .form-inline {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-  }
-  
-  .form-inline label {
-    margin: 5px 10px 5px 0;
-    font-size: 1.1rem;
-    font-weight: bold;
-  }
-  
-  .form-inline input {
-    vertical-align: middle;
-    margin: 5px 10px 5px 0;
-    width: 70px;
-    height: 7px;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-  }
-  
-  .form-inline button {
-    padding-left: 20px;
-    height: 30px;
-    padding: 10px;
-    margin: 5px 10px 5px 0;
-    background-color: #17408B;
-    border: 1px solid #C9082A;
-    color: white;
-  }
-  
-  .form-inline button:hover {
-    background-color: royalblue;
-  }
-  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  width: 70px;
+  height: 7px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.form-inline button {
+  padding-left: 20px;
+  height: 30px;
+  padding: 10px;
+  margin: 5px 10px 5px 0;
+  background-color: #17408B;
+  border: 1px solid #C9082A;
+  color: white;
+}
+
+.form-inline button:hover {
+  background-color: royalblue;
+}
+
+.form-inline .delete-button {
+  padding-left: 20px;
+  height: 30px;
+  padding: 10px;
+  margin: 5px 10px 5px 0;
+  background-color: #C9082A;
+  border: 1px solid #17408B;
+  color: white;
+}
