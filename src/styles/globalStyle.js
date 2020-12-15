@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 1.rem;
-  width: 500px;
+  width: 600px;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
@@ -25,6 +25,10 @@ const GlobalStyle = createGlobalStyle`
   }
   tbody tr:nth-of-type(even) {
       background-color: white;
+  }
+
+  body {
+    background-color: #F2F2F2;
   }
   
   `;

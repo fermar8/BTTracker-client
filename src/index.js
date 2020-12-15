@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import "fontsource-kanit"; 
+import "fontsource-open-sans"; 
 
 import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';

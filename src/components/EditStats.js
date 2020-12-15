@@ -5,9 +5,6 @@ import TrainingStats from './../components/TrainingStats'
 import './../components/EditStats.css'
 
 
-//get training/id and populate submit buttons form
-
-
 class EditStats extends Component {
     constructor(props){
         super(props);
@@ -21,7 +18,7 @@ class EditStats extends Component {
             threePConverted: "" };
     }
 
-    handleFormSubmit(event) {
+    handleFormSubmit = (event) => {
         event.preventDefault();
         const performanceId = this.props.performanceToEdit._id
 
@@ -34,7 +31,7 @@ class EditStats extends Component {
             twoPAttempted, twoPConverted, threePAttempted, threePConverted}, 
             {withCredentials: true})
         .then( () => {
-          // this.props.getData(); // leave this comment - we will used it later
+          this.props.getPerformances(); 
           this.setState({attendance: true, 
             coachComments: "", 
             ftAttempted: "",
@@ -42,7 +39,8 @@ class EditStats extends Component {
             twoPAttempted: "",
             twoPConverted: "",
             threePAttempted: "",
-            threePConverted: "" });
+            threePConverted: "",
+             });
         })
         .catch( (err) => console.log(err) )
       }

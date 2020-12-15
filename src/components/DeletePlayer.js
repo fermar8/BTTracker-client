@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router'
 import './../components/Add-player.css'
 
-class AddPlayer extends Component {
+class DeletePlayer extends Component {
   constructor(props){
       super(props);
       this.state = { 
-        name: "", 
-        number: "", 
-        email: "",
-        };
+          name: "",
+          number: "", 
+          email: "",
+          };
   }
    
-
   handleFormSubmit = (event) => {
       event.preventDefault();
-      const {name, number, email} = this.state;
-      axios.post("http://localhost:4000/api/players", { name, number, email }, {withCredentials: true})
+      const playerId = this.props.playerToDelete._id
+      axios.delete(`http://localhost:4000/api/players/${playerId}`, {withCredentials: true})
       .then( () => {
         this.props.getPlayers()
         this.setState({name: "", number: "", email: ""});
@@ -25,12 +25,21 @@ class AddPlayer extends Component {
     }
   
 
+   componentDidMount() {
+        const  {name, number, email} = this.props.playerToDelete;
+  
+      this.setState({name, number, email});
+      }
+
   handleChange = (event) => {
       const {name, value} = event.target;
       this.setState({[name]: value});
   }
 
   render(){
+
+    const {name, number, email} = this.state
+
     return(
       <div className="add-player-form">
         <form className="form-inline" onSubmit={this.handleFormSubmit}>
@@ -38,29 +47,29 @@ class AddPlayer extends Component {
           <label>Name:</label>
           <input type="text" 
             name="name" 
-            value={this.state.name} 
+            value={name} 
             onChange={ (e) => this.handleChange(e) }
           />
           
           <label>Number:</label>
           <input className="number" type="text" 
             name="number" 
-            value={this.state.number} 
+            value={number} 
             onChange={ (e) => this.handleChange(e) } 
           />
 
           <label>Email:</label>
           <input type="text"
             name="email" 
-            value={this.state.email} 
+            value={email} 
             onChange={ (e) => this.handleChange(e) } 
           />
           
-          <button type="submit">Add</button>
+          <button className="delete-button" type="submit">Delete</button>
         </form>
       </div>
     )
   }
 }
 
-export default AddPlayer;
+export default withRouter(DeletePlayer);

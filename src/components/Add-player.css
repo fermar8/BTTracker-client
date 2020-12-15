@@ -48,3 +48,12 @@
     background-color: royalblue;
   }
   
+  .form-inline .delete-button {
+    padding-left: 20px;
+    height: 30px;
+    padding: 10px;
+    margin: 5px 10px 5px 0;
+    background-color: #C9082A;
+    border: 1px solid #17408B;
+    color: white;
+  }

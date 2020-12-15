@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import EditStats from './EditStats'
+//import TrainingDetails from './TrainingDetails'
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import {StyledButton} from './../styles/button'
@@ -19,18 +20,22 @@ class TrainingStats extends Component {
   }
 
   componentDidMount() {
+    this.getPerformances()
+    
+}
+  
+  getPerformances = () => {
     const { id } = this.props.match.params;
 
     axios.get(`http://localhost:4000/api/training/${id}`, {withCredentials: true})
         .then( (response ) => {
             const stats = response.data.stats
             const training = response.data;
-            const {date, exercises, notes} = training;
-            this.setState({date, exercises, notes, stats: [...stats]});
+            this.setState({ stats: [...stats], isDisplayed: false});
         })
         .catch((err) => console.log(err))
-}
-  
+  }
+
   showStats = (performance) => {
       this.setState({
           isDisplayed: !this.state.isDisplayed,
@@ -51,7 +56,11 @@ class TrainingStats extends Component {
   }
 
   render(){
+
+  console.log(this.state.trainingToEdit)
+
     return(
+  
   <main className="main">
     
     <div>
@@ -99,7 +108,7 @@ class TrainingStats extends Component {
         </tbody>
     </table>
        {this.state.isDisplayed ? 
-                <EditStats performanceToEdit={this.state.performanceToEdit}/> : null}
+                <EditStats getPerformances={this.getPerformances} performanceToEdit={this.state.performanceToEdit}/> : null}
             <StyledButton onClick={this.deleteTraining}>Delete Training</StyledButton>
     </div>
  </main>
