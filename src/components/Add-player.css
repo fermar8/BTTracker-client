@@ -1,67 +1,46 @@
-.add-player-form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 10px;
-}
-
-.add-player-form .add-player {
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding-right: 15px;
-
-}
-
-.form-inline {
+.edit-inline-form {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  margin-left: 35%;
+  margin-top: 1.5%;
 }
 
 
-.form-inline label {
+.edit-inline-form label {
   margin: 5px 10px 5px 0;
   font-size: 1.1rem;
   font-weight: bold;
-  color: black;
 }
 
-.form-inline input {
+.edit-inline-form input {
   vertical-align: middle;
   margin: 5px 10px 5px 0;
-  width: 70px;
-  max-width: 200px;
-  height: 7px;
   padding: 10px;
-  border-radius: 6px;
   background-color: #fff;
-  border: 1px solid black;
+  border: 1px solid #ddd;
+  width: 80px;
+  height: 15px;
 }
 
-.delete-team {
-  padding-left: 20px;
-  width: 60px;
-  height: 32px;
-  padding: 10px;
+.team-number-input {
+  vertical-align: middle;
   margin: 5px 10px 5px 0;
-  background-color: #C9082A;
-  border: 0.3px solid black;
-  color: white;
-  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  width: 40px;
+  height: 15px;
 }
 
-.form-inline button:hover {
+.edit-inline-form button {
+  padding: 10px 20px;
+  border-radius: 6px;
+  background-color: #17408B;
+  border: 1px solid #ddd;
+  color: white;
+}
+
+.edit-inline-form button:hover {
   background-color: royalblue;
-}
-
-
-.submit-team {
-  padding-left: 20px;
-  height: 30px;
-  padding: 10px;
-  margin: 5px 10px 5px 0;
-  background-color:#17408B; 
-  border: 1px solid #17408B;
-  color: white;
-  border-radius: 5px;
 }

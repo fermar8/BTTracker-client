@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import { withRouter } from 'react-router'
 import TrainingStats from './../components/TrainingStats'
-import './../components/EditStats.css'
 
 
 class EditStats extends Component {

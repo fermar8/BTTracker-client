@@ -41,25 +41,25 @@ class DeletePlayer extends Component {
     const {name, number, email} = this.state
 
     return(
-      <div className="add-player-form">
-        <form className="form-inline" onSubmit={this.handleFormSubmit}>
+      
+        <form className="edit-inline-form" onSubmit={this.handleFormSubmit}>
           
-          <label>Name:</label>
-          <input type="text" 
+          <label className="team-form-label">Name:</label>
+          <input className="team-name-input" type="text" 
             name="name" 
             value={name} 
             onChange={ (e) => this.handleChange(e) }
           />
           
-          <label>Number:</label>
-          <input className="number" type="number" 
+          <label className="team-form-label">Number:</label>
+          <input className="team-number-input" type="number" 
             name="number" 
             value={number} 
             onChange={ (e) => this.handleChange(e) } 
           />
 
-          <label>Email:</label>
-          <input type="text"
+          <label className="team-form-label">Email:</label>
+          <input className="team-email-input" type="text"
             name="email" 
             value={email} 
             onChange={ (e) => this.handleChange(e) } 
@@ -67,7 +67,7 @@ class DeletePlayer extends Component {
           
           <button className="delete-team" type="submit">Delete</button>
         </form>
-      </div>
+      
     )
   }
 }

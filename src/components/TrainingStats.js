@@ -4,7 +4,7 @@ import EditStats from './EditStats'
 import './../pages/TrainingPage.css'
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
-import { YoutubeSearchedFor } from '@material-ui/icons';
+
 
 
 //Try to make a single button for every EditStats form

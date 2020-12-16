@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
       padding: 12px 15px;
   }
   tbody tr{
-    border-bottom: 1.75px solid #C9082A;
+    border-bottom: 1.75px solid #17408B;
     background-color: #d3d3d3;
     font-size: 1.2rem;
   }
