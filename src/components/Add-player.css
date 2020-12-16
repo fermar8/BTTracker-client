@@ -18,44 +18,50 @@
   align-items: center;
 }
 
+
 .form-inline label {
   margin: 5px 10px 5px 0;
   font-size: 1.1rem;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 .form-inline input {
   vertical-align: middle;
   margin: 5px 10px 5px 0;
   width: 70px;
+  max-width: 200px;
   height: 7px;
   padding: 10px;
+  border-radius: 6px;
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid black;
 }
 
-.form-inline button {
+.delete-team {
   padding-left: 20px;
   width: 60px;
-  height: 30px;
+  height: 32px;
   padding: 10px;
   margin: 5px 10px 5px 0;
-  background-color: #17408B;
-  border: 0.3px solid #C9082A;
+  background-color: #C9082A;
+  border: 0.3px solid black;
   color: white;
+  border-radius: 5px;
 }
 
 .form-inline button:hover {
   background-color: royalblue;
 }
 
-.form-inline .delete-button {
+
+.submit-team {
   padding-left: 20px;
   height: 30px;
   padding: 10px;
   margin: 5px 10px 5px 0;
-  background-color: #C9082A;
+  background-color:#17408B; 
   border: 1px solid #17408B;
   color: white;
+  border-radius: 5px;
 }

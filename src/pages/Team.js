@@ -99,8 +99,8 @@ class Team extends Component {
           <td>{player.name}</td>
           <td>{player.number}</td>
           <td>{player.email}</td>
-          <td><button className="button" onClick={(e) => this.showEdit (player)}>Edit Player</button></td>
-          <td><button className="button-delete" onClick={(e) => this.showDelete (player)}>Delete Player</button></td>  
+          <td><button className="team-edit" onClick={(e) => this.showEdit (player)}>Edit Player</button></td>
+          <td><button className="team-delete" onClick={(e) => this.showDelete (player)}>Delete Player</button></td>  
       </tr>
         )
    })}
@@ -109,7 +109,7 @@ class Team extends Component {
     </div>
  </main>
 
-        <button className="button-add" onClick={this.showAdd}>Add a new player</button>
+        <button className="team-add" onClick={this.showAdd}>Add a new player</button>
       </div>
     </div>
     );

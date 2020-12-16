@@ -25,23 +25,9 @@ render() {
 
     let data = this.state.data
     
-    //let date = new Date('2020-12-15')   "14/12/2020"
 
     const allPerformances = [...data];
 
-    /*const changeDateFormat = allPerformances.forEach((perfObj) => {
-        let year = perfObj.date.slice(6, 9);
-        let month = perfObj.date.slice(3, 4);
-        let day = perfObj.date.slice(0, 2);
-
-        console.log(day)
-     
-        const joinDates = year + "-" + month + "-" + day;
-        return joinDates
-    })
-    
-    console.log(changeDateFormat)*/
-    
     const playerPerformancesObj = {
     
     };

@@ -53,7 +53,7 @@ class EditPlayer extends Component {
           />
           
           <label>Number:</label>
-          <input className="number" type="text" 
+          <input className="number" type="number" 
             name="number" 
             value={number} 
             onChange={ (e) => this.handleChange(e) } 
@@ -66,7 +66,7 @@ class EditPlayer extends Component {
             onChange={ (e) => this.handleChange(e) } 
           />
           
-          <button type="submit">Edit</button>
+          <button className="submit-team" type="submit">Edit</button>
         </form>
       </div>
     )

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from './../context/auth-context';
-import './Signup.css'
+import './Login.css'
 
 
 class Signup extends Component {
@@ -26,34 +26,35 @@ class Signup extends Component {
   render() {
     const { username, team, email, password } = this.state;
     return (
-      <div className="signup-div">
-        <h1>Sign Up</h1>
-
-      <div className="signup-div-form">
-
+      
         <form onSubmit={this.handleFormSubmit}>
+         <div className="container">
+           <h1>Sign up</h1>
+           <p> Fill in this form to create an account.</p>
 
-          <label className="form-label">Username:</label>
-          <input className="form-input" type="text" name="username" value={username} onChange={this.handleChange} />
+          <label className="login-label">Username:</label>
+          <input className="login-input" type="text" name="username" value={username} onChange={this.handleChange} />
 
-          <label className="form-label">Team:</label>
-          <input className="form-input" type="text" name="team" value={team} onChange={this.handleChange} />
+          <label className="login-label">Team:</label>
+          <input className="login-input" type="text" name="team" value={team} onChange={this.handleChange} />
 
-          <label className="form-label">email:</label>
-          <input className="form-input" type="text" name="email" value={email} onChange={this.handleChange} />
+          <label className="login-label">Email:</label>
+          <input className="login-input" type="text" name="email" value={email} onChange={this.handleChange} />
 
-          <div className="password-form">
-          <label className="form-label">Password:</label>
-          <input className="form-input" type="password" name="password" value={password} onChange={this.handleChange} />  
-          </div>
+          
+          <label className="login-label">Password:</label>
+          <input className="login-input" type="password" name="password" value={password} onChange={this.handleChange} />  
+    
 
-          <button type="submit"> Sign up </button>
-        </form>
+          <button className="login-button" type="submit"> Sign up </button>
 
-      </div>
+
+      <div className="clearfix">
         <p>Already have an account?</p>
-        <Link className="form-link" to={"/login"}> Login</Link>
+        <Link className="login-link" to={"/login"}> Go to login</Link>
     </div>
+   </div>
+  </form>
     );
   }
 }

@@ -43,7 +43,7 @@ class AddPlayer extends Component {
           />
           
           <label>Number:</label>
-          <input className="number" type="text" 
+          <input className="number" type="number" 
             name="number" 
             value={this.state.number} 
             onChange={ (e) => this.handleChange(e) } 
@@ -56,7 +56,7 @@ class AddPlayer extends Component {
             onChange={ (e) => this.handleChange(e) } 
           />
           
-          <button type="submit">Add</button>
+          <button className="submit-team" type="submit">Add</button>
         </form>
       </div>
     )

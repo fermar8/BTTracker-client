@@ -63,14 +63,14 @@ render() {
     button = <div>
               <p className="calendar-message">You have a training scheduled for this date</p> 
               <Link to={`/training/${idToString}`}>
-              <button className="button-calendar">Edit training</button>
+              <button className="calendar-button">Edit training</button>
               </Link>   
              </div>
   } else {
     button = <div>
               <p className= "date">{this.state.date}</p>
               <p className="calendar-message">Schedule a training for this date</p>
-              <button className="button-calendar" onClick={this.addTraining}>Add training</button>
+              <button className="calendar-button" onClick={this.addTraining}>Add training</button>
              </div>
   }
      

@@ -52,7 +52,7 @@ class DeletePlayer extends Component {
           />
           
           <label>Number:</label>
-          <input className="number" type="text" 
+          <input className="number" type="number" 
             name="number" 
             value={number} 
             onChange={ (e) => this.handleChange(e) } 
@@ -65,7 +65,7 @@ class DeletePlayer extends Component {
             onChange={ (e) => this.handleChange(e) } 
           />
           
-          <button className="delete-button" type="submit">Delete</button>
+          <button className="delete-team" type="submit">Delete</button>
         </form>
       </div>
     )
