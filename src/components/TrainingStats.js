@@ -4,6 +4,7 @@ import EditStats from './EditStats'
 import './../pages/TrainingPage.css'
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
+import { YoutubeSearchedFor } from '@material-ui/icons';
 
 
 //Try to make a single button for every EditStats form
@@ -56,7 +57,55 @@ class TrainingStats extends Component {
 
   render(){
 
-  console.log(this.state.trainingToEdit)
+  let playerPerformancesObj = {};
+
+  const allPerformances = this.state.stats
+
+  allPerformances.forEach((perfObj) => {
+
+    if (!perfObj.player) return;
+    const playerName = perfObj.player.name;
+    const playerId = perfObj.player._id;
+    const recordExists = playerPerformancesObj[playerName] !== undefined;
+    //                   playerPerformancesObj.Ferran
+    
+    if (!recordExists && perfObj.attendance){
+    //  playerPerformancesObj.Ferran
+        playerPerformancesObj[playerName] = {
+            name: playerName,
+            attendance: true,
+            attended: "Yes",
+            date: perfObj.date,
+            perfId: perfObj._id,
+            ftAttempted: perfObj.ftAttempted,
+            ftConverted: perfObj.ftConverted,
+            twoPAttempted: perfObj.twoPAttempted,
+            twoPConverted: perfObj.twoPConverted,
+            threePAttempted: perfObj.threePAttempted,
+            threePConverted: perfObj.threePConverted,
+        }
+    }
+    else if (!recordExists && !perfObj.attendance){
+        playerPerformancesObj[playerName] = {
+            name: playerName,
+            attendance: false,
+            perfId: perfObj._id,
+            date: perfObj.date,
+            attended: "No",
+            ftAttempted: perfObj.ftAttempted,
+            ftConverted: perfObj.ftConverted,
+            twoPAttempted: perfObj.twoPAttempted,
+            twoPConverted: perfObj.twoPConverted,
+            threePAttempted: perfObj.threePAttempted,
+            threePConverted: perfObj.threePConverted,
+        }
+    }
+
+})
+
+const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => playerPerformancesObj[key] )
+  
+  console.log('playerPerformancesArr', playerPerformancesArr)
 
     return(
   
@@ -67,7 +116,7 @@ class TrainingStats extends Component {
       <thead>
       <tr>
           <th>Player</th>
-          <th>Feedback</th>
+          <th>Attendance</th>
           <th>FT</th>
           <th>FTA</th>
           <th>FT%</th>
@@ -81,12 +130,12 @@ class TrainingStats extends Component {
        </tr>
       </thead>
       <tbody>
-    {this.state.stats.map((performance) => {
+    {playerPerformancesArr.map((performance) => {
   return (
-      <tr key={performance._id}>
-          <td style={{fontWeight: "bold", color: "black"}}>{performance.player.name}</td>
+      <tr key={performance.perfId}>
+          <td style={{fontWeight: "bold", color: "black"}}>{performance.name}</td>
 
-          <td>{performance.coachComments}</td>
+          <td>{performance.attended}</td>
           <td>{performance.ftConverted}</td>
           <td>{performance.ftAttempted}</td>
           <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td>

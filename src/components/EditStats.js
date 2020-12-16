@@ -8,8 +8,8 @@ import './../components/EditStats.css'
 class EditStats extends Component {
     constructor(props){
         super(props);
-        this.state = { attendance: true, 
-            coachComments: "", 
+        this.state = { attendance: true,
+            date: "",  
             ftAttempted: "",
             ftConverted: "",
             twoPAttempted: "",
@@ -20,20 +20,22 @@ class EditStats extends Component {
 
     handleFormSubmit = (event) => {
         event.preventDefault();
-        const performanceId = this.props.performanceToEdit._id
+        const performanceId = this.props.performanceToEdit.perfId
 
-        const {attendance, coachComments, ftAttempted, ftConverted,
+        const {attendance, date, ftAttempted, ftConverted,
         twoPAttempted, twoPConverted, threePAttempted, threePConverted} = this.state;    
         
         axios.put(
           process.env.REACT_APP_API_URL + `/api/performance/${performanceId}`, 
-            {attendance, coachComments, ftAttempted, ftConverted,
+            {attendance, date, ftAttempted, ftConverted,
             twoPAttempted, twoPConverted, threePAttempted, threePConverted}, 
             {withCredentials: true})
         .then( () => {
           this.props.getPerformances(); 
-          this.setState({attendance: true, 
-            coachComments: "", 
+          this.setState({
+            attendance: true, 
+            date: "",
+            attended: "",
             ftAttempted: "",
             ftConverted: "",
             twoPAttempted: "",
@@ -46,10 +48,10 @@ class EditStats extends Component {
       }
 
     componentDidMount() {
-      const  {attendance, coachComments, ftAttempted, ftConverted,
+      const  {attendance, attended, date, ftAttempted, ftConverted,
         twoPAttempted, twoPConverted, threePAttempted, threePConverted} = this.props.performanceToEdit;
 
-    this.setState({attendance, coachComments, ftAttempted, ftConverted,
+    this.setState({attendance, attended, date, ftAttempted, ftConverted,
         twoPAttempted, twoPConverted, threePAttempted, threePConverted});
     }
     
@@ -57,10 +59,27 @@ class EditStats extends Component {
         const {name, value} = event.target;
         this.setState({[name]: value});
     }
+
+    toggleAttendance = (e) => {
+      e.preventDefault();
+      this.setState({attendance: !this.state.attendance})
+      if (this.state.attended === "Yes") {
+      this.setState({attended: "No", 
+      ftAttempted: "0",
+      ftConverted: "0",
+      twoPAttempted: "0",
+      twoPConverted: "0",
+      threePAttempted: "0",
+      threePConverted: "0"})
+
+     } else if (this.state.attended === "No") {
+      this.setState({attended: "Yes"})
+     } 
+  }
   
     render(){      
 
-        const {attendance, coachComments, ftAttempted, ftConverted,
+        const {attended, ftAttempted, ftConverted,
         twoPAttempted, twoPConverted, threePAttempted, threePConverted} = this.state;  
 
       return (
@@ -69,7 +88,7 @@ class EditStats extends Component {
             <table>
              <thead>
               <tr>
-                  <th>Comments</th>
+                  <th>Attendance</th>
                   <th>FT</th>
                   <th>FTA</th>
                   <th>2P</th>
@@ -81,8 +100,7 @@ class EditStats extends Component {
              </thead>
              <tbody>
               <tr>
-                <td><textarea type="text" name="coachComments"
-                value={coachComments} onChange= { (e) => this.handleChange(e) } /></td>
+                <td><button className="attendance-button" onClick={(e) => this.toggleAttendance (e)}>{attended}</button></td>
                 <td><input type="number" name="ftConverted" value={ftConverted} onChange= { (e) => this.handleChange(e) }/></td>
                 <td><input type="number" name="ftAttempted" value={ftAttempted} onChange= { (e) => this.handleChange(e) }/></td>
                 <td><input type="number" name="twoPConverted" value={twoPConverted} onChange= { (e) => this.handleChange(e) }/></td>

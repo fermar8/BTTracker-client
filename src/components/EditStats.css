@@ -13,8 +13,9 @@ form {
 }
 
 form input {
-    width: 23px;
-    height: 17px;
+    width: 30px;
+    height: 20px;
+    margin-left: -15px;
 }
 
 table{
@@ -42,8 +43,18 @@ table{
     .edit-button {
         margin-right: 20px;
         margin-left: 10px;
-        width: 55px;
+        width: 70px;
+        margin-bottom: 10px;
         background-color: royalblue;
         color: white;
+        font-weight: bold;
+    }
+
+    .attendance-button {
+        width: 55px;
+        margin-right: 20px;
+        margin-left: 10px;
+        margin-bottom: 8px;
+        background-color: white;
         font-weight: bold;
     }
