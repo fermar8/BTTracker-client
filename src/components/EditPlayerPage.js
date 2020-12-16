@@ -17,7 +17,7 @@ class EditPlayer extends Component {
       event.preventDefault();
       const playerId = this.props.playerToEdit._id
       const {name, number, email} = this.state;
-      axios.put(`http://localhost:4000/api/players/${playerId}`, { name, number, email }, {withCredentials: true})
+      axios.put( process.env.REACT_APP_API_URL + `/api/players/${playerId}`, { name, number, email }, {withCredentials: true})
       .then( () => {
         this.props.getPlayers()
         this.setState({name: "", number: "", email: ""});

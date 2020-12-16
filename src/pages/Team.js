@@ -21,7 +21,7 @@ class Team extends Component {
   
 
   getPlayers = () => {
-    axios.get('http://localhost:4000/api/team', {withCredentials: true})
+    axios.get(process.env.REACT_APP_API_URL + '/api/team', {withCredentials: true})
     .then((response) => {
       console.log(response)
       this.setState({ players: response.data.players,
@@ -59,6 +59,9 @@ class Team extends Component {
 
 
   render() {
+
+
+
     return (
   
       <div>

@@ -32,7 +32,7 @@ class Navbar extends Component {
         <p className="navbar-p">Stats</p><EqualizerIcon/>
         </Link>
 
-        <Link id='logout-btn' to={'/'} onClick={this.props.logout}><p className="navbar-p">Exit</p><ExitToAppIcon/></Link>
+        <ExitToAppIcon className="exit-icon" onClick={this.props.logout}/>
          
       </div>
         ) : null }

@@ -6,15 +6,16 @@ import './../pages/Home.css'
 function Home() {
   return (
     <div className="home"> 
-      <h1>Home Page</h1>
+      <h1>Basketball Training Tracker</h1>
+     <div className="button-div">
       <Link to="/login">
-        <button className="navbar-button">Login</button>
+        <button>Login</button>
       </Link>
-        <br />
       <Link to="/signup">
-        <button className="navbar-button">Sign Up</button>
+        <button>Sign Up</button>
       </Link>
     </div>
+   </div>
   )
 }
 

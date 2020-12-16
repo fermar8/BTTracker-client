@@ -26,7 +26,7 @@ class EditStats extends Component {
         twoPAttempted, twoPConverted, threePAttempted, threePConverted} = this.state;    
         
         axios.put(
-            `http://localhost:4000/api/performance/${performanceId}`, 
+          process.env.REACT_APP_API_URL + `/api/performance/${performanceId}`, 
             {attendance, coachComments, ftAttempted, ftConverted,
             twoPAttempted, twoPConverted, threePAttempted, threePConverted}, 
             {withCredentials: true})
@@ -89,7 +89,7 @@ class EditStats extends Component {
                 <td><input type="number" name="twoPAttempted" value={twoPAttempted} onChange= { (e) => this.handleChange(e) }/></td>
                 <td><input type="number" name="threePConverted" value={threePConverted} onChange= { (e) => this.handleChange(e) }/></td>
                 <td><input type="number" name="threePAttempted" value={threePAttempted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><button type="submit">Submit</button></td>
+                <td><button className="edit-button" type="submit">Submit</button></td>
                 </tr>
               </tbody>
             </table>

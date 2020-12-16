@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import EditStats from './EditStats'
-//import TrainingDetails from './TrainingDetails'
+import './../pages/TrainingPage.css'
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
-import {StyledButton} from './../styles/button'
 
 
 //Try to make a single button for every EditStats form
@@ -27,7 +26,7 @@ class TrainingStats extends Component {
   getPerformances = () => {
     const { id } = this.props.match.params;
 
-    axios.get(`http://localhost:4000/api/training/${id}`, {withCredentials: true})
+    axios.get(process.env.REACT_APP_API_URL + `/api/training/${id}`, {withCredentials: true})
         .then( (response ) => {
             const stats = response.data.stats
             const training = response.data;
@@ -45,7 +44,7 @@ class TrainingStats extends Component {
  
   deleteTraining = () => {
       const { id } = this.props.match.params
-      axios.delete(`http://localhost:4000/api/training/${id}`, {withCredentials: true})
+      axios.delete(process.env.REACT_APP_API_URL + `/api/training/${id}`, {withCredentials: true})
         .then( () => this.props.history.push('/calendar') )
         .catch( (err) => console.log(err))
   }
@@ -85,9 +84,8 @@ class TrainingStats extends Component {
     {this.state.stats.map((performance) => {
   return (
       <tr key={performance._id}>
-        <Link to={`/team/${performance.player._id}`} id='stats-btn'>
           <td style={{fontWeight: "bold", color: "black"}}>{performance.player.name}</td>
-        </Link>
+
           <td>{performance.coachComments}</td>
           <td>{performance.ftConverted}</td>
           <td>{performance.ftAttempted}</td>
@@ -98,7 +96,7 @@ class TrainingStats extends Component {
           <td>{performance.threePConverted}</td>
           <td>{performance.threePAttempted}</td>
           <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td>
-          <td><button onClick={(e) => this.showStats (performance)}>Edit</button></td>
+          <td><button className="training-button" onClick={(e) => this.showStats (performance)}>Edit</button></td>
            
       </tr>
    
@@ -109,7 +107,7 @@ class TrainingStats extends Component {
     </table>
        {this.state.isDisplayed ? 
                 <EditStats getPerformances={this.getPerformances} performanceToEdit={this.state.performanceToEdit}/> : null}
-            <StyledButton onClick={this.deleteTraining}>Delete Training</StyledButton>
+            <button className="delete-training" onClick={this.deleteTraining}>Delete Training</button>
     </div>
  </main>
     )

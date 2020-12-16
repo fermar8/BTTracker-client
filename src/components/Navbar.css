@@ -46,3 +46,9 @@
     font-size: 1.2rem;
     color: white;
 }
+
+.exit-icon {
+    color: white;
+    cursor: pointer;
+    margin-right: 40px;
+}

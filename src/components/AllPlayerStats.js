@@ -14,7 +14,7 @@ class AllPlayerStats extends Component {
    }
 
 componentDidMount() {
-    axios.get(`http://localhost:4000/api/team/stats`, {withCredentials: true})
+    axios.get(process.env.REACT_APP_API_URL + '/api/team/stats', {withCredentials: true})
         .then( (response ) => {
             this.setState({data: [...response.data]});
         })
@@ -25,29 +25,51 @@ render() {
 
     let data = this.state.data
 
-    let filterPlayerPerf = data.reduce(function(acc, val){
-        let p = acc.filter(function(perfObj){
-            return perfObj.name===val.player.name;
-        }).pop() || {name:val.player.name, 
-                    ftAttempted: 0, ftConverted:0, twoPAttempted:0,
-                    twoPConverted:0, threePAttempted:0, threePConverted:0};
-        
-         
-        p.ftAttempted += val.ftAttempted;
-        p.ftConverted += val.ftConverted;
-        p.twoPAttempted += val.twoPAttempted;
-        p.twoPConverted += val.twoPConverted;
-        p.threePAttempted += val.threePAttempted;
-        p.threePConverted += val.threePConverted;
-        
-        acc.push(p);
-        return acc;
-    },[]);
+    const allPerformances = [...data];
+    console.log(data)
+    const playerPerformancesObj = {
 
-    const filterFinal =  filterPlayerPerf.filter((v, i, a) => a.findIndex(p=>(p.name === v.name && p.name===v.name))===i);
+    };
 
- console.log(filterFinal)
+
+    allPerformances.forEach((perfObj) => {
+
+        if (!perfObj.player) return;
+        const playerName = perfObj.player.name;
+        const playerId = perfObj.player._id;
+        const recordExists = playerPerformancesObj[playerName] !== undefined;
+        //                   playerPerformancesObj.Ferran
+        
+        if (!recordExists){
+        //  playerPerformancesObj.Ferran
+            playerPerformancesObj[playerName] = {
+                name: playerName,
+                playerId: playerId,
+                ftAttempted: perfObj.ftAttempted,
+                ftConverted: perfObj.ftConverted,
+                twoPAttempted: perfObj.twoPAttempted,
+                twoPConverted: perfObj.twoPConverted,
+                threePAttempted: perfObj.threePAttempted,
+                threePConverted: perfObj.threePConverted,
+            }
+        }
+        else if (recordExists){
+            const existingPerformance = playerPerformancesObj[playerName];
+            existingPerformance.ftAttempted += perfObj.ftAttempted;
+            existingPerformance.ftConverted += perfObj.ftConverted;
+            existingPerformance.twoPAttempted += perfObj.twoPAttempted;
+            existingPerformance.twoPConverted += perfObj.twoPConverted;
+            existingPerformance.threePAttempted += perfObj.threePAttempted;
+            existingPerformance.threePConverted += perfObj.threePConverted;
+
+        }
+
+    })
+
+    const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => playerPerformancesObj[key] )
+
     return(
+
         <main className="main">
 
        <div>
@@ -72,7 +94,7 @@ render() {
          </tr>
         </thead>
         <tbody>
-        {filterFinal.map((performance) => {
+        {playerPerformancesArr.map((performance) => {
      return (
        
          <tr key={performance.name}>

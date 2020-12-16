@@ -1,6 +1,7 @@
 
 .main-div{
     max-width: 650px;
+    width: 700px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); 
 
@@ -19,7 +20,7 @@ form input {
 table{
     border-collapse: collapse;
     font-size: 0.9rem;
-    width: 650px;
+    width: 750px;
     border-radius: 5px 5px 0 0;
   }
     thead tr{
@@ -36,4 +37,13 @@ table{
     }
     tbody tr:nth-of-type(even) {
         background-color: white;
+    }
+
+    .edit-button {
+        margin-right: 20px;
+        margin-left: 10px;
+        width: 55px;
+        background-color: royalblue;
+        color: white;
+        font-weight: bold;
     }

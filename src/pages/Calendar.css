@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     padding-top: 40px;
-    
 }
 
 .main-div {
@@ -22,6 +21,26 @@
 .calendar-message {
     font-size: 1.3rem;
     font-weight: bold;
+    color: white
+}
+
+
+main .date {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white
 
 }
 
+.button-calendar {
+    width: 120px;
+    height: 50px;
+    position: static; 
+    background-color: royalblue;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-right: 43%;
+    margin-top: 10%;
+    
+}

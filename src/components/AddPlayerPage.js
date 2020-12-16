@@ -16,7 +16,7 @@ class AddPlayer extends Component {
   handleFormSubmit = (event) => {
       event.preventDefault();
       const {name, number, email} = this.state;
-      axios.post("http://localhost:4000/api/players", { name, number, email }, {withCredentials: true})
+      axios.post( process.env.REACT_APP_API_URL + "/api/players", { name, number, email }, {withCredentials: true})
       .then( () => {
         this.props.getPlayers()
         this.setState({name: "", number: "", email: ""});

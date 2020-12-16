@@ -22,6 +22,7 @@
   margin: 5px 10px 5px 0;
   font-size: 1.1rem;
   font-weight: bold;
+  color: white;
 }
 
 .form-inline input {
@@ -36,11 +37,12 @@
 
 .form-inline button {
   padding-left: 20px;
+  width: 60px;
   height: 30px;
   padding: 10px;
   margin: 5px 10px 5px 0;
   background-color: #17408B;
-  border: 1px solid #C9082A;
+  border: 0.3px solid #C9082A;
   color: white;
 }
 

@@ -16,7 +16,7 @@ class DeletePlayer extends Component {
   handleFormSubmit = (event) => {
       event.preventDefault();
       const playerId = this.props.playerToDelete._id
-      axios.delete(`http://localhost:4000/api/players/${playerId}`, {withCredentials: true})
+      axios.delete( process.env.REACT_APP_API_URL + `/api/players/${playerId}`, {withCredentials: true})
       .then( () => {
         this.props.getPlayers()
         this.setState({name: "", number: "", email: ""});

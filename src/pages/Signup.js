@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from './../context/auth-context';
+import './Signup.css'
 
 
 class Signup extends Component {
@@ -25,29 +26,34 @@ class Signup extends Component {
   render() {
     const { username, team, email, password } = this.state;
     return (
-      <div>
+      <div className="signup-div">
         <h1>Sign Up</h1>
+
+      <div className="signup-div-form">
 
         <form onSubmit={this.handleFormSubmit}>
 
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange} />
+          <label className="form-label">Username:</label>
+          <input className="form-input" type="text" name="username" value={username} onChange={this.handleChange} />
 
-          <label>Team:</label>
-          <input type="text" name="team" value={team} onChange={this.handleChange} />
+          <label className="form-label">Team:</label>
+          <input className="form-input" type="text" name="team" value={team} onChange={this.handleChange} />
 
-          <label>email:</label>
-          <input type="text" name="email" value={email} onChange={this.handleChange} />
+          <label className="form-label">email:</label>
+          <input className="form-input" type="text" name="email" value={email} onChange={this.handleChange} />
 
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />  
+          <div className="password-form">
+          <label className="form-label">Password:</label>
+          <input className="form-input" type="password" name="password" value={password} onChange={this.handleChange} />  
+          </div>
 
-          <input type="submit" value="Signup" />
+          <button type="submit"> Sign up </button>
         </form>
-        
-        <p>Already have account?</p>
-        <Link to={"/login"}> Login</Link>
+
       </div>
+        <p>Already have an account?</p>
+        <Link className="form-link" to={"/login"}> Login</Link>
+    </div>
     );
   }
 }

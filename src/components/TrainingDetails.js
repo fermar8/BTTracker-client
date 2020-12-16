@@ -20,7 +20,7 @@ class TrainingDetails extends Component {
         
         const trainingId = this.props.trainingToEdit._id
         
-        axios.put(`http://localhost:4000/api/training/${trainingId}`, 
+        axios.put(process.env.REACT_APP_API_URL + `/api/training/${trainingId}`, 
           {exercises: this.state.exercises, notes: this.state.notes})
         .then( () => {
           this.setState({exercises: "", notes: ""});

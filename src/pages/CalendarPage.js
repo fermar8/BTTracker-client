@@ -3,7 +3,6 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'
 import { withAuth } from './../context/auth-context';
 import axios from 'axios';
-import { StyledButton } from './../styles/button';
 import { Link } from 'react-router-dom';
 import './../pages/Calendar.css';
 
@@ -25,7 +24,7 @@ class CalendarPage extends Component {
     }
 
     getTrainings = () => {
-      axios.get('http://localhost:4000/api/training', {withCredentials: true})
+      axios.get(process.env.REACT_APP_API_URL + '/api/training', {withCredentials: true})
       .then((response) => {
         this.setState({ trainings: response.data})
         console.log(this.state)
@@ -36,7 +35,7 @@ class CalendarPage extends Component {
 
     addTraining = (event) =>{
       event.preventDefault();
-      axios.post("http://localhost:4000/api/training", {date: this.state.date}, {withCredentials: true})
+      axios.post(process.env.REACT_APP_API_URL + "/api/training", {date: this.state.date}, {withCredentials: true})
       .then( (createdTraining) => {
         this.getTrainings()
       })
@@ -64,13 +63,14 @@ render() {
     button = <div>
               <p className="calendar-message">You have a training scheduled for this date</p> 
               <Link to={`/training/${idToString}`}>
-              <StyledButton>Edit training</StyledButton>
+              <button className="button-calendar">Edit training</button>
               </Link>   
              </div>
   } else {
     button = <div>
+              <p className= "date">{this.state.date}</p>
               <p className="calendar-message">Schedule a training for this date</p>
-              <StyledButton  onClick={this.addTraining}>Add training</StyledButton>
+              <button className="button-calendar" onClick={this.addTraining}>Add training</button>
              </div>
   }
      
@@ -83,7 +83,7 @@ render() {
         onChange={this.onChange}
       />
 <>
-      <p>{dateToString}</p>
+      <p className= "date">{dateToString}</p>
         {button}
     </>
 
