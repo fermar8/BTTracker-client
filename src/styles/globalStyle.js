@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: #F2F2F2;
     background-image: url(${img});
+    background-size: cover;
   }
   
   `;
