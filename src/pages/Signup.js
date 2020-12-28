@@ -9,6 +9,7 @@ class Signup extends Component {
   team: "", 
   email: "",
   password: "", 
+  errorMessage: false
 };
     
   handleChange = event => {

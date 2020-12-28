@@ -45,6 +45,12 @@
     font-size: 1.2rem;
 }
 
+.errorMessage {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #C9082A; 
+}
+
 .login-p {
     font-size: 1.1rem;
     color: rgb(109, 101, 101);
