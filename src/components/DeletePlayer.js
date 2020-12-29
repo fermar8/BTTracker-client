@@ -42,7 +42,11 @@ class DeletePlayer extends Component {
 
     return(
       
+      <div className="container-inline-form">
+       <div className="cross-container"><span onClick={this.props.showComponent} className="close-popup">&times;</span>
         <form className="edit-inline-form" onSubmit={this.handleFormSubmit}>
+
+        <p className= "delete-text">Are you sure you want to delete this player? All training and global stats will be lost.</p>
           
           <label className="team-form-label">Name:</label>
           <input className="team-name-input" type="text" 
@@ -67,6 +71,8 @@ class DeletePlayer extends Component {
           
           <button className="delete-team" type="submit">Delete</button>
         </form>
+      </div>
+    </div>
       
     )
   }

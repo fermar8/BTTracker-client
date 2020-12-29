@@ -1,9 +1,48 @@
-.edit-inline-form {
-  display: flex;
+.container-inline-form {
   flex-flow: row wrap;
   align-items: center;
-  margin-left: 35%;
-  margin-top: 1.5%;
+  position: absolute;
+  z-index: 1;
+  width: 98%;
+  height: 100%;
+  border-radius: 4px;
+  opacity: 0.98;
+  background-color: rgba(0,0,0,0.4);
+  overflow: auto;
+}
+
+.cross-container {
+  z-index: 1;
+  width: 60%;
+  border-radius: 4px;
+  margin-left: 20%;
+  background-color: white;
+}
+
+
+.edit-inline-form {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  left: 40%;
+  width: 100%; /* Could be more or less, depending on screen size */
+}
+
+.close-popup {
+  color: #aaa;
+  float: right;
+  padding-right: 8px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-popup:hover {
+  cursor: pointer;
+}
+
+.delete-text {
+  color: #C9082A; 
+  font-weight: bold;
 }
 
 
@@ -19,7 +58,7 @@
   padding: 10px;
   background-color: #fff;
   border: 1px solid #ddd;
-  width: 80px;
+  width: 100px;
   height: 15px;
 }
 

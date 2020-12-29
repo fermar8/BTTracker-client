@@ -43,6 +43,8 @@ class EditPlayer extends Component {
 
     return(
       
+      <div className="container-inline-form">
+       <div className="cross-container"><span onClick={this.props.showComponent} className="close-popup">&times;</span>
         <form className="edit-inline-form" onSubmit={this.handleFormSubmit}>
           
           <label className="team-form-label">Name:</label>
@@ -68,7 +70,8 @@ class EditPlayer extends Component {
           
           <button className="submit-team" type="submit">Edit</button>
         </form>
-      
+      </div>
+    </div>
     )
   }
 }

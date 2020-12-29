@@ -39,7 +39,9 @@ class Team extends Component {
  
   showAdd = () => {
     this.setState({
-      displayAdd: !this.state.displayAdd
+      displayAdd: !this.state.displayAdd,
+      displayEdit: false,
+      displayDelete: false
     })
   }
 
@@ -47,37 +49,46 @@ class Team extends Component {
   showEdit(player) {
     this.setState({
       displayEdit: !this.state.displayEdit,
-      playerToEdit: player})
+      playerToEdit: player,
+      displayAdd: false,
+      displayDelete: false})
   }
 
   showDelete(player) {
     this.setState({
       displayDelete: !this.state.displayDelete,
-      playerToDelete: player})
+      playerToDelete: player,
+      displayAdd: false,
+      displayEdit: false})
   }
 
-
+  showComponent = () => {
+   if (this.state.displayDelete || this.state.displayEdit || this.state.displayAdd) {
+   this.setState({
+     displayDelete: false,
+     displayAdd: false,
+     displayEdit: false,
+   })
+  }
+}
 
   render() {
 
 
 
     return (
-  
-      <div>
+ 
+     <>
 
       {this.state.displayAdd ?
-        <AddPlayer getPlayers={this.getPlayers}/> : null}
+        <AddPlayer showComponent={this.showComponent} getPlayers={this.getPlayers}/> : null}
       {this.state.displayEdit ?
-        <EditPlayer getPlayers={this.getPlayers} playerToEdit={this.state.playerToEdit} /> : null}
+        <EditPlayer showComponent={this.showComponent} getPlayers={this.getPlayers} playerToEdit={this.state.playerToEdit}/> : null}
       {this.state.displayDelete ? 
-        <DeletePlayer getPlayers={this.getPlayers} playerToDelete={this.state.playerToDelete} /> : null}
+        <DeletePlayer showComponent={this.showComponent} getPlayers={this.getPlayers} playerToDelete={this.state.playerToDelete}/> : null} 
         
-
-      <div className="team-list">
-        <h1>Squad</h1>
-  
-        <main className="main">
+    <div onClick={this.showComponent} className="team-list">
+    <h1>Squad</h1>
     
     <div>
      <table> 
@@ -107,11 +118,12 @@ class Team extends Component {
         </tbody>
     </table>
     </div>
- </main>
 
         <button className="team-add" onClick={this.showAdd}>Add a new player</button>
       </div>
-    </div>
+
+    </>
+    
     );
   }
 }

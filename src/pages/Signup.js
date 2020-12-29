@@ -21,8 +21,30 @@ class Signup extends Component {
     event.preventDefault();
     const { username, team, email, password} = this.state;
 
+    if (username === "" || password === "" || team === "" || email === ""){
+      this.setState({errorMessage: "Must fill all fields in the form"});
+      return;
+    }
+
+    if (!email.match("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")) {
+      this.setState({errorMessage: "Please submit a valid email address"});
+      return;
+    }
+
+    if (!password.match("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$")) {
+      this.setState({errorMessage: "Password must be 8 characters long, contain one special character, uppercase and lowercase"});
+      return;
+    }
+
+    // Call funciton coming from AuthProvider ( via withAuth )
     this.props.signup( username, team, email, password );
-  }
+        if (this.props.error) {
+      this.setState({errorMessage: "Username or team already in use"});
+      return;
+    }
+  };
+
+  
   
   render() {
     const { username, team, email, password } = this.state;
@@ -51,6 +73,7 @@ class Signup extends Component {
 
 
       <div className="clearfix">
+        <p className="error-message">{this.state.errorMessage}</p>
         <p>Already have an account?</p>
         <Link className="login-link" to={"/login"}> Go to login</Link>
     </div>

@@ -50,7 +50,7 @@ class Login extends Component {
           <button className="login-button" type="submit"> Login </button>
         
       <div className="clearfix">
-        <p className="errorMessage">{this.state.errorMessage}</p>
+        <p className="error-message">{this.state.errorMessage}</p>
         <p className="login-p">Still don't have an account?</p>
         <Link className="login-link" to={"/signup"}> Go to sign up</Link>
    </div>

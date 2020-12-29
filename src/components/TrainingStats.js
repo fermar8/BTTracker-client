@@ -138,7 +138,7 @@ const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => pl
           <td>{performance.attended}</td>
           <td>{performance.ftConverted}</td>
           <td>{performance.ftAttempted}</td>
-          <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td>
+          <td>{(((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%' === undefined||NaN) ? 0 : ((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td>
           <td>{performance.twoPConverted}</td>
           <td>{performance.twoPAttempted}</td>
           <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(3) + '%'}</td>

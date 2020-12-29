@@ -33,7 +33,10 @@ class AddPlayer extends Component {
   render(){
     return(
       
+     <div className="container-inline-form">
+       <div className="cross-container"><span onClick={this.props.showComponent} className="close-popup">&times;</span>
         <form className="edit-inline-form" onSubmit={this.handleFormSubmit}>
+
           
           <label className="team-form-label">Name:</label>
           <input className="team-name-input" type="text" 
@@ -58,6 +61,8 @@ class AddPlayer extends Component {
           
           <button className="submit-team" type="submit">Add</button>
         </form>
+      </div>
+    </div>
     )
   }
 }
