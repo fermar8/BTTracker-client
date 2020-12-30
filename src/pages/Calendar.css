@@ -15,7 +15,6 @@
     width: 650px;
     height: 300px;
     font-size: 1rem;
-
 }
 
 .calendar-message {
@@ -29,7 +28,6 @@ main .date {
     font-size: 1.3rem;
     font-weight: bold;
     color: black
-
 }
 
 .button-calendar {
@@ -41,8 +39,7 @@ main .date {
     font-weight: bold;
     border-radius: 6px;
     margin-right: 43%;
-    margin-top: 5%;
-    
+    margin-top: 5%;  
 }
 
 .card {
@@ -75,4 +72,10 @@ main .date {
 
   .calendar-button:hover {
       background-color: royalblue;
+  }
+
+  .highlight {
+      background-color: #17408B;
+      color: white;
+      border: 5px solid white;
   }

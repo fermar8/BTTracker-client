@@ -4,6 +4,7 @@ import 'react-calendar/dist/Calendar.css'
 import { withAuth } from './../context/auth-context';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import GroupIcon from '@material-ui/icons/Group';
 import './../pages/Calendar.css';
 
  
@@ -46,6 +47,11 @@ class CalendarPage extends Component {
 
 
 render() {
+
+  const allTrainings = this.state.trainings.map((training) => {
+    return training.date
+  })
+
   const trainingDate = this.state.trainings.filter(training =>
   training.date === this.state.date).map(training => training.date)
   
@@ -81,6 +87,20 @@ render() {
     <div>
       <Calendar className="calendar"
         onChange={this.onChange}
+
+        tileClassName={({ date, view }) => {
+      if(allTrainings.includes(date.toLocaleDateString())){
+       return 'highlight';
+      } else {
+        return 'all-tiles'
+      }
+    }}
+
+      tileContent={({date, view}) => {
+      if(allTrainings.includes(date.toLocaleDateString())) {
+       return <GroupIcon style={{height: "10px"}}/>
+      }
+      }}
       />
 <>
       <p className= "date">{dateToString}</p>

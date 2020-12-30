@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import EditStats from './EditStats'
+import DeleteTraining from './DeleteTraining'
 import './../pages/TrainingPage.css'
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
-
-
-
-//Try to make a single button for every EditStats form
 
 class TrainingStats extends Component {
   constructor(props){
@@ -15,7 +12,9 @@ class TrainingStats extends Component {
       this.state = { 
           isDisplayed: false,
           performanceToEdit: {},
-          stats: []
+          showDelete: false,
+          stats: [],
+          training: {}
       }
   }
 
@@ -29,9 +28,10 @@ class TrainingStats extends Component {
 
     axios.get(process.env.REACT_APP_API_URL + `/api/training/${id}`, {withCredentials: true})
         .then( (response ) => {
+          console.log(response.data)
             const stats = response.data.stats
-            const training = response.data;
-            this.setState({ stats: [...stats], isDisplayed: false});
+            const trainingToEdit = response.data;
+            this.setState({ stats: [...stats], isDisplayed: false, training: trainingToEdit});
         })
         .catch((err) => console.log(err))
   }
@@ -43,16 +43,13 @@ class TrainingStats extends Component {
       });
   }
  
-  deleteTraining = () => {
-      const { id } = this.props.match.params
-      axios.delete(process.env.REACT_APP_API_URL + `/api/training/${id}`, {withCredentials: true})
-        .then( () => this.props.history.push('/calendar') )
-        .catch( (err) => console.log(err))
-  }
-
   handleChange = (event) => { 
       const {name, value} = event.target;
       this.setState({[name]: value});
+  }
+
+  showDeleteTraining = () => {
+    this.setState({showDelete: !this.state.showDelete})
   }
 
   render(){
@@ -103,14 +100,15 @@ class TrainingStats extends Component {
 
 })
 
-const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => playerPerformancesObj[key] )
-  
-  console.log('playerPerformancesArr', playerPerformancesArr)
+const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => playerPerformancesObj[key] );
 
     return(
-  
+      <>
+      {this.state.stats.map((trainingDay) => {
+        return <h1>{trainingDay.date}</h1>
+      })}
+
   <main className="main">
-    
     <div>
      <table> 
       <thead>
@@ -138,14 +136,17 @@ const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => pl
           <td>{performance.attended}</td>
           <td>{performance.ftConverted}</td>
           <td>{performance.ftAttempted}</td>
-          <td>{(((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%' === undefined||NaN) ? 0 : ((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td>
+          {((performance.ftConverted/performance.ftAttempted)*100) ?
+          <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td>}
           <td>{performance.twoPConverted}</td>
           <td>{performance.twoPAttempted}</td>
-          <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(3) + '%'}</td>
+          {((performance.twoPConverted/performance.twoPAttempted)*100) ?
+          <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td>}
           <td>{performance.threePConverted}</td>
           <td>{performance.threePAttempted}</td>
-          <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td>
-          <td><button className="training-button" onClick={(e) => this.showStats (performance)}>Edit</button></td>
+          {((performance.threePConverted/performance.threePAttempted)*100) ?
+          <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td> }
+          <td><button className="training-button" onClick={(e) => this.showStats (performance)}>Edit</button></td> 
            
       </tr>
    
@@ -156,11 +157,17 @@ const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => pl
     </table>
        {this.state.isDisplayed ? 
                 <EditStats getPerformances={this.getPerformances} performanceToEdit={this.state.performanceToEdit}/> : null}
-            <button className="delete-training" onClick={this.deleteTraining}>Delete Training</button>
+       {this.state.showDelete ?         
+                <DeleteTraining history={this.props.history} training={this.state.training}/> : null }
+
+            <button className="delete-training" onClick={this.showDeleteTraining}>Delete Training</button>
     </div>
  </main>
+  
+ </>
     )
   }
 }
+
 
 export default withRouter(TrainingStats);

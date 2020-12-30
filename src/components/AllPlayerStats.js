@@ -127,16 +127,20 @@ render() {
        
          <tr key={performance.name}>
              <td style={{fontWeight: "bold"}}>{performance.name}</td>
-             <td>{((performance.attended) / (performance.notAttended + performance.attended)*100).toPrecision(3) + '%'}</td>
+             {((performance.attended) / (performance.notAttended + performance.attended)*100) ?
+             <td>{((performance.attended) / (performance.notAttended + performance.attended)*100).toPrecision(3) + '%'}</td> : <td>0</td>}
              <td>{performance.ftConverted}</td>
              <td>{performance.ftAttempted}</td>
-             <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td>
+             {((performance.ftConverted/performance.ftAttempted)*100) ? 
+             <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td>}
              <td>{performance.twoPConverted}</td>
              <td>{performance.twoPAttempted}</td>
-             <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(3) + '%'}</td>
+             {((performance.twoPConverted/performance.twoPAttempted)*100) ?
+             <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td> }
              <td>{performance.threePConverted}</td>
              <td>{performance.threePAttempted}</td>
-             <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td>
+             {((performance.threePConverted/performance.threePAttempted)*100) ?
+             <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td> }
              
          </tr>    
            
