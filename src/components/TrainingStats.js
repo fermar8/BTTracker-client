@@ -52,6 +52,15 @@ class TrainingStats extends Component {
     this.setState({showDelete: !this.state.showDelete})
   }
 
+  showComponent = () => {
+    if (this.state.isDisplayed || this.state.showDelete) {
+      this.setState({
+        isDisplayed: false,
+        showDelete: false
+      })
+    }
+  }
+
   render(){
 
   let playerPerformancesObj = {};
@@ -103,9 +112,15 @@ class TrainingStats extends Component {
 const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => playerPerformancesObj[key] );
 
     return(
+
       <>
+      {this.state.isDisplayed ? 
+                <EditStats showComponent={this.showComponent} getPerformances={this.getPerformances} performanceToEdit={this.state.performanceToEdit}/> : null}
+       {this.state.showDelete ?         
+                <DeleteTraining showComponent={this.showComponent} history={this.props.history} training={this.state.training}/> : null }
+                
       {this.state.stats.map((trainingDay) => {
-        return <h1>{trainingDay.date}</h1>
+        return <h1 className="date">{trainingDay.date}</h1>
       })}
 
   <main className="main">
@@ -155,12 +170,8 @@ const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => pl
    })}
         </tbody>
     </table>
-       {this.state.isDisplayed ? 
-                <EditStats getPerformances={this.getPerformances} performanceToEdit={this.state.performanceToEdit}/> : null}
-       {this.state.showDelete ?         
-                <DeleteTraining history={this.props.history} training={this.state.training}/> : null }
 
-            <button className="delete-training" onClick={this.showDeleteTraining}>Delete Training</button>
+            <button className="delete-training-button" onClick={this.showDeleteTraining}>Delete Training</button>
     </div>
  </main>
   

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './../pages/TrainingPage.css'
 
 class DeleteTraining extends Component {
   constructor(props){
@@ -26,11 +27,16 @@ class DeleteTraining extends Component {
 
   render(){
     return(
-      <>
-      <p className= "delete-text">Are you sure you want to delete this training? All stats will be lost.</p>
-      <button className="delete-training" onClick={this.deleteTraining}>Delete</button>
+    <div className="container-popup">
+        <div className="cross-training-delete"><span onClick={this.props.showComponent} className="close-training-popup">&times;</span>
+           <div className="training-delete-container">
 
-      </>
+            <p className= "delete-training-text">Are you sure you want to delete this training? All stats will be lost.</p>
+            <button className="delete-training-btn" onClick={this.deleteTraining}>Delete</button>
+
+           </div>
+        </div>
+    </div>
      
     )
   }

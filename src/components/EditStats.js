@@ -82,8 +82,9 @@ class EditStats extends Component {
         twoPAttempted, twoPConverted, threePAttempted, threePConverted} = this.state;  
 
       return (
-       <div className="main-div">
-         <form onSubmit={this.handleFormSubmit}>
+      <div className="container-popup">
+       <div className="cross-training-delete"><span onClick={this.props.showComponent} className="close-training-popup">&times;</span>
+         <form className="training-delete-container" onSubmit={this.handleFormSubmit}>
             <table>
              <thead>
               <tr>
@@ -112,6 +113,7 @@ class EditStats extends Component {
             </table>
           </form>     
         </div>
+      </div>
         )
   }
 

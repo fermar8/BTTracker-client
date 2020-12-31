@@ -9,7 +9,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Team from './pages/Team';
 import Calendar from './pages/CalendarPage';
-import TrainingPage from './pages/TrainingPage'
+import TrainingStats from './components/TrainingStats'
 import TeamStats from './pages/TeamStats'
 
 import AnonRoute from './components/AnonRoute';
@@ -30,7 +30,7 @@ class App extends Component {
           <AnonRoute exact path="/login" component={Login} />
 
           <PrivateRoute exact path='/calendar'component={Calendar} />
-          <PrivateRoute exact path='/training/:id' component={TrainingPage}/>
+          <PrivateRoute exact path='/training/:id' component={TrainingStats}/>
           <PrivateRoute exact path="/team" component={Team} />
           <PrivateRoute exact path='/team/stats' component={TeamStats}/>
 

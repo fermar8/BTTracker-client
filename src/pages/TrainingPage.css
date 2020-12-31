@@ -5,8 +5,53 @@
     text-align: center;
 }
 
-.details {
+.date {
+    text-align: center;
+}
 
+.container-popup {
+    flex-flow: row wrap;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    width: 98%;
+    height: 100%;
+    border-radius: 4px;
+    opacity: 0.98;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+}
+
+.cross-training-delete {
+    z-index: 1;
+    width: 60%;
+    border-radius: 4px;
+    margin-left: 20%;
+    background-color: white;
+}
+
+.close-training-popup {
+    color: #aaa;
+    float: right;
+    padding-right: 8px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-training-popup:hover {
+    cursor: pointer;
+}
+
+.training-delete-container {
+    background-color: #fefefe;
+    border-radius: 6px;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    left: 40%;
+    width: 100%;
+}
+
+.details {
     float: left;
  }
 
@@ -26,7 +71,16 @@
      cursor: pointer;
  }
 
- .delete-training {
+ .delete-training-text {
+     color: #C9082A;
+     font-weight: bold;
+     font-size: 1.1rem;
+     text-align: center;
+ }
+
+ .delete-training-button {
+     text-align: center;
+     align-items: center;
      margin-right: 20px;
      margin-top: 30px;
      width: 120px;
@@ -38,7 +92,23 @@
      opacity: 0.9;
  }
 
-  .delete-training:hover {
+ .delete-training-btn {
+     width: 120px;
+     height: 30px;
+     align-items: center;
+     margin-left: 42%;
+     background-color: royalblue;
+     border-radius: 6px;
+     color: white;
+     font-weight: bold;
+ }
+
+  .delete-training-btn:hover {
+      background-color:  #C9082A;
+      cursor: pointer;
+  }
+
+  .delete-training-button:hover {
       background-color: royalblue;
       cursor: pointer;
   }
