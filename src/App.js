@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
 import { Switch } from 'react-router-dom';
 import GlobalStyle from './styles/globalStyle'
+import './app.css';
 
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -22,8 +22,8 @@ class App extends Component {
   render() {
     return (
       <div className="container">
+      <GlobalStyle/>
         <Navbar />
-        <GlobalStyle/>
         <Switch>
           <AnonRoute exact path="/" component={Home} />
           <AnonRoute exact path="/signup" component={Signup} />

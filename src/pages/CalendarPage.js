@@ -66,14 +66,15 @@ render() {
   let button;
   if (dateToString.includes(this.state.date)) {
   
-    button = <div>
+    button = <div className="training-button">
+              <p className= "date">{this.state.date}</p>
               <p className="calendar-message">You have a training scheduled for this date</p> 
               <Link to={`/training/${idToString}`}>
               <button className="calendar-button">Edit training</button>
               </Link>   
              </div>
   } else {
-    button = <div>
+    button = <div className="training-button">
               <p className= "date">{this.state.date}</p>
               <p className="calendar-message">Schedule a training for this date</p>
               <button className="calendar-button" onClick={this.addTraining}>Add training</button>
@@ -84,7 +85,6 @@ render() {
   return (
   <main className="main">
    <div className="main-div">
-    <div>
       <Calendar className="calendar"
         onChange={this.onChange}
 
@@ -102,14 +102,9 @@ render() {
       }
       }}
       />
-<>
-      <p className= "date">{dateToString}</p>
-        {button}
-    </>
-
 
     </div>
-   </div>
+        {button}
   </main>
   );
  }

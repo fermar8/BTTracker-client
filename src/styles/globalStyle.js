@@ -1,8 +1,19 @@
 import {createGlobalStyle} from 'styled-components';
-import img from './../components/images/background5.jpg';
+import homeBackground from './../components/images/background-home.jpg'
+import background from './../components/images/background5.jpg';
 
 
 const GlobalStyle = createGlobalStyle`
+
+@media (max-width: 424px) {
+
+  body {
+    margin: 0;
+    background-color: #F2F2F2;
+    background-image: url(${homeBackground});
+    background-size: fit;
+  }
+/*
   table{
   border-collapse: collapse;
   font-size: 1.rem;
@@ -30,13 +41,9 @@ const GlobalStyle = createGlobalStyle`
   }
   tbody tr:nth-of-type(even) {
       background-color: white;
-  }
-  body {
-    background-color: #F2F2F2;
-    background-image: url(${img});
-    background-size: cover;
-  }
+  } */
   
+}
   `;
   
 export default GlobalStyle

@@ -1,3 +1,5 @@
+@media (max-width: 600px) {
+
 * {box-sizing: border-box}
 
   .login-input[type=text], .login-input[type=password] {
@@ -31,10 +33,6 @@
   opacity:1;
 }
 
-.container {
-  padding: 16px;
-}
-
 .login-link {
     color: black;
     font-weight: bold;
@@ -62,19 +60,33 @@
 }
 
 .home-main {
-    margin-top: 10%;
-    margin-right: 10%;
-    margin-left: 10%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin-top: 50%;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.basketball-icon {
+    margin-top: 10px;
 }
 
 .home-button {
   background-color: #17408B;
   color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: solid 4px;
   cursor: pointer;
-  width: 20%;
-  opacity: 0.8;
-  border-radius: 10px;
+  padding: 7px;
+  font-weight: bold;
+  margin-right: 8px;
+  width: 100px;
+  border-radius: 5px;
+}
+
+
 }

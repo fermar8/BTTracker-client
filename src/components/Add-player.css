@@ -1,3 +1,98 @@
+@media(max-width: 600px) {
+  .container-inline-form {
+    flex-flow: row wrap;
+    align-items: center;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0.98;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+  }
+  
+  .cross-container {
+    z-index: 1;
+    width: 60%;
+    border-radius: 4px;
+    margin-left: 20%;
+    background-color: white;
+  }
+  
+  
+  .edit-inline-form {
+    background-color: #fefefe;
+    border-radius: 5px;
+    margin-top: 30%;
+    align-items: center; 
+    text-align: center;
+    padding: 20px;
+    width: 100%;  
+  }
+  
+  .close-popup {
+    color: #aaa;
+    float: right;
+    padding-right: 8px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-popup:hover {
+    cursor: pointer;
+  }
+  
+  .delete-text {
+    color: #C9082A; 
+    font-size: 0.65rem;
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  
+  .edit-inline-form label {
+    margin: 5px 10px 5px 0;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .edit-inline-form input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 150px;
+    height: 15px;
+  }
+  
+  .team-number-input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    width: 40px;
+    height: 15px;
+  }
+  
+  .edit-inline-form button {
+    padding: 7px 20px;
+    border-radius: 6px;
+    margin-top: 8px;
+    background-color: #17408B;
+    border: 1px solid #ddd;
+    color: white;
+  }
+  
+  .edit-inline-form button:hover {
+    background-color: royalblue;
+  }
+}
+
+/*
 .container-inline-form {
   flex-flow: row wrap;
   align-items: center;
@@ -22,10 +117,10 @@
 
 .edit-inline-form {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 15% auto; /* 15% from the top and centered 
   padding: 20px;
   left: 40%;
-  width: 100%; /* Could be more or less, depending on screen size */
+  width: 100%; /* Could be more or less, depending on screen size 
 }
 
 .close-popup {
@@ -83,3 +178,5 @@
 .edit-inline-form button:hover {
   background-color: royalblue;
 }
+
+*/

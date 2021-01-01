@@ -9,6 +9,8 @@
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "bootstrap": "^5.0.0-beta1",
+    "bulma": "^0.9.1",
     "cloudinary": "1.21.0",
     "fontsource-kanit": "^3.1.5",
     "fontsource-open-sans": "^3.1.5",

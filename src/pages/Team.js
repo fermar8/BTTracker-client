@@ -91,12 +91,11 @@ class Team extends Component {
     <h1>Squad</h1>
     
     <div>
-     <table> 
+     <table className="team-table"> 
       <thead>
-      <tr className="head">
+      <tr>
           <th>Player</th>
           <th>number</th>
-          <th>email</th>
           <th></th>
           <th></th>
        </tr>
@@ -106,12 +105,11 @@ class Team extends Component {
         {this.state.players.map((player) => {
           return (
 
-      <tr className="text" key={player._id}>
-          <td>{player.name}</td>
-          <td>{player.number}</td>
-          <td>{player.email}</td>
-          <td><button className="team-edit" onClick={(e) => this.showEdit (player)}>Edit Player</button></td>
-          <td><button className="team-delete" onClick={(e) => this.showDelete (player)}>Delete Player</button></td>  
+      <tr key={player._id}>
+          <td className="name-text">{player.name}</td>
+          <td className="number-text">{player.number}</td>
+          <td><button className="team-edit" onClick={(e) => this.showEdit (player)}>Edit</button></td>
+          <td><button className="team-delete" onClick={(e) => this.showDelete (player)}>Delete</button></td>  
       </tr>
         )
    })}
