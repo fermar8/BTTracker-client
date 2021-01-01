@@ -1,7 +1,7 @@
 @media(max-width: 600px) {
 
 .navbar{
-    width: 100%;
+    width: 100vw;
     height: 75px;
     margin: 0;
     display: flex;
@@ -34,10 +34,10 @@
 }
 
 .flex-menu {
-    position: absolute; 
+    position: fixed; 
     top: 0;
     left: 0;
-    opacity: 0.95;
+    opacity: 0.98;
     display: flex;
     z-index: 1;
     padding: 5px 4px 5px 8px;

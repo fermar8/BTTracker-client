@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { withRouter } from 'react-router'
-import TrainingStats from './../components/TrainingStats'
+import './../pages/TrainingPage.css'
 
 
 class EditStats extends Component {
@@ -14,7 +14,8 @@ class EditStats extends Component {
             twoPAttempted: "",
             twoPConverted: "",
             threePAttempted: "",
-            threePConverted: "" };
+            threePConverted: "",
+            playerName: "" };
     }
 
     handleFormSubmit = (event) => {
@@ -49,9 +50,11 @@ class EditStats extends Component {
     componentDidMount() {
       const  {attendance, attended, date, ftAttempted, ftConverted,
         twoPAttempted, twoPConverted, threePAttempted, threePConverted} = this.props.performanceToEdit;
+   
+      const playerName = this.props.performanceToEdit.name
 
     this.setState({attendance, attended, date, ftAttempted, ftConverted,
-        twoPAttempted, twoPConverted, threePAttempted, threePConverted});
+        twoPAttempted, twoPConverted, threePAttempted, threePConverted, playerName});
     }
     
     handleChange = (event) => {
@@ -82,38 +85,50 @@ class EditStats extends Component {
         twoPAttempted, twoPConverted, threePAttempted, threePConverted} = this.state;  
 
       return (
-      <div className="container-popup">
-       <div className="cross-training-delete"><span onClick={this.props.showComponent} className="close-training-popup">&times;</span>
-         <form className="training-delete-container" onSubmit={this.handleFormSubmit}>
-            <table>
-             <thead>
-              <tr>
-                  <th>Attendance</th>
-                  <th>FT</th>
-                  <th>FTA</th>
-                  <th>2P</th>
-                  <th>2PA</th>
-                  <th>3P</th>
-                  <th>3PA</th>
-                  <th></th>
-              </tr>
-             </thead>
-             <tbody>
-              <tr>
-                <td><button className="attendance-button" onClick={(e) => this.toggleAttendance (e)}>{attended}</button></td>
-                <td><input type="number" name="ftConverted" value={ftConverted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="ftAttempted" value={ftAttempted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="twoPConverted" value={twoPConverted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="twoPAttempted" value={twoPAttempted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="threePConverted" value={threePConverted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><input type="number" name="threePAttempted" value={threePAttempted} onChange= { (e) => this.handleChange(e) }/></td>
-                <td><button className="edit-button" type="submit">Submit</button></td>
-                </tr>
-              </tbody>
-            </table>
+       <div className="details-training-edit">
+        <div className="player-name-title"><h1>{this.state.playerName}</h1></div>
+        <span onClick={this.props.showComponent} className="close-training-popup">&times;</span>
+         <form className="align-training-form" onSubmit={this.handleFormSubmit}>
+            <div className="element-training-edit">
+              <label>Attendance</label>
+              <button className="attendance-button" onClick={(e) => this.toggleAttendance (e)}>{attended}</button>
+            </div>
+
+            <div className="element-training-edit">
+              <label>Free Throws</label>
+              <input type="number" name="ftConverted" value={ftConverted} onChange= { (e) => this.handleChange(e) }/>
+            </div>
+
+            <div className="element-training-edit">
+              <label>Free Throws Attempted</label>
+              <input type="number" name="ftAttempted" value={ftAttempted} onChange= { (e) => this.handleChange(e) }/>
+            </div>
+
+            <div className="element-training-edit">
+              <label>Two Points</label>
+              <input type="number" name="twoPConverted" value={twoPConverted} onChange= { (e) => this.handleChange(e) }/>
+            </div>
+
+            <div className="element-training-edit">
+              <label>Two Points Attempted</label>
+              <input type="number" name="twoPAttempted" value={twoPAttempted} onChange= { (e) => this.handleChange(e) }/>
+            </div>
+
+            <div className="element-training-edit">
+              <label>Three Points</label>
+              <input type="number" name="threePConverted" value={threePConverted} onChange= { (e) => this.handleChange(e) }/>
+            </div>
+
+            <div className="element-training-edit">
+              <label>Three Points Attempted</label>
+              <input type="number" name="threePAttempted" value={threePAttempted} onChange= { (e) => this.handleChange(e) }/>
+            </div>
+
+            <div className="button-training-submit">
+                <button className="submit-edit-training" type="submit">Submit</button>
+            </div>
           </form>     
         </div>
-      </div>
         )
   }
 

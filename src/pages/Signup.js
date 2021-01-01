@@ -49,11 +49,11 @@ class Signup extends Component {
   render() {
     const { username, team, email, password } = this.state;
     return (
-      
+      <main className="login-main">
         <form onSubmit={this.handleFormSubmit}>
          <div className="container">
-           <h1>Sign up</h1>
-           <p> Fill in this form to create an account.</p>
+           <h1 className="title-login">Sign up</h1>
+           <p className="please-login"> Fill in this form to create an account.</p>
 
           <label className="login-label">Username:</label>
           <input className="login-input" type="text" name="username" value={username} onChange={this.handleChange} />
@@ -74,11 +74,12 @@ class Signup extends Component {
 
       <div className="clearfix">
         <p className="error-message">{this.state.errorMessage}</p>
-        <p>Already have an account?</p>
+        <p className="login-p">Already have an account?</p>
         <Link className="login-link" to={"/login"}> Go to login</Link>
     </div>
    </div>
   </form>
+ </main>
     );
   }
 }

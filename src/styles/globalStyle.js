@@ -5,7 +5,7 @@ import background from './../components/images/background5.jpg';
 
 const GlobalStyle = createGlobalStyle`
 
-@media (max-width: 424px) {
+@media (max-width: 600px) {
 
   body {
     margin: 0;

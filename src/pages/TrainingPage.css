@@ -1,366 +1,165 @@
+
 @media(max-width: 600px) {
-    .main{
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-    }
-    
-    .date {
-        text-align: center;
-    }
-    
-    .container-popup {
-        flex-flow: row wrap;
-        align-items: center;
-        position: absolute;
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-        border-radius: 4px;
-        opacity: 0.98;
-        background-color: rgba(0,0,0,0.4);
-        overflow: auto;
-    }
-    
-    .cross-training-delete {
-        z-index: 1;
-        width: 60%;
-        border-radius: 4px;
-        margin-left: 20%;
-        background-color: white;
-    }
-    
-    .close-training-popup {
-        color: #aaa;
-        float: right;
-        padding-right: 8px;
-        font-size: 28px;
-        font-weight: bold;
-    }
-    
-    .close-training-popup:hover {
-        cursor: pointer;
-    }
-    
-    .training-delete-container {
-        background-color: #fefefe;
-        border-radius: 6px;
-        margin: 15% auto;
-        padding: 20px;
-        left: 40%;
-        width: 100%;
-    }
-    
-    .details {
-        float: left;
-     }
-    
-     .training-button {
-         width: 30px;
-         height: 30px;
-         background-color: #17408B;
-         border-radius: 5px;
-         border: 0.2 solid black;
-         color: white;
-         font-weight: bold;
-     }
-    
-     .training-button:hover {
-         background-color: royalblue;
-         cursor: pointer;
-     }
-    
-     .delete-training-text {
-         color: #C9082A;
-         font-weight: bold;
-         font-size: 1.1rem;
-         text-align: center;
-     }
-    
-     .delete-training-button {
-         text-align: center;
-         align-items: center;
-         margin-top: 30px;
-         width: 120px;
-         height:30px;
-         background-color: #C9082A;
-         border-radius: 6px;
-         color: white;
-         font-weight: bold;
-         opacity: 0.9;
-     }
-    
-     .delete-training-btn {
-         width: 120px;
-         height: 30px;
-         align-items: center;
-         margin-left: 42%;
-         background-color: royalblue;
-         border-radius: 6px;
-         color: white;
-         font-weight: bold;
-     }
-    
-      .delete-training-btn:hover {
-          background-color:  #C9082A;
-          cursor: pointer;
-      }
-    
-      .delete-training-button:hover {
-          background-color: royalblue;
-          cursor: pointer;
-      }
-    
-     .attendance-button {
-        width: 55px;
-        height: 30px;
-        color: white;
-        border-radius: 5px;
-        background-color: royalblue;
-        font-weight: bold;
-    }
-    
-    .attendance-button:hover{
-        background-color: #17408B;
-        cursor: pointer;
-    }
 
-    table{
-        border-collapse: collapse;
-        font-size: 0.9rem;
-        width: 90vw;
-        border-radius: 5px 5px 0 0;
-      }
-        thead tr{
-        background-color: #17408B;
-        color: white;
-        font-weight: bold;
-        }
-    
-        tbody tr{
-          border-bottom: 1.75px solid #17408B;
-    
-        
-        }
-        tbody tr:nth-of-type(even) {
-            background-color: white;
-        }
-    
-        .edit-button {
-            margin-right: 35px;
-            width: 80px;
-            height: 35px;
-            margin-bottom: 10px;
-            background-color: #17408B;
-            color: white;
-            font-weight: bold;
-            border-radius: 5px;
-        
-        }
-    
-        .edit-button:hover {
-            background-color: royalblue;
-            cursor: pointer;
-        }
-}
-
-
-
-
-/*
-
-.main{
+.training-main{
     width: 100%;
+    background-color: #ddd;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
-}
-
-.date {
-    text-align: center;
-}
-
-.container-popup {
-    flex-flow: row wrap;
     align-items: center;
-    position: absolute;
-    z-index: 1;
-    width: 98%;
-    height: 100%;
-    border-radius: 4px;
-    opacity: 0.98;
-    background-color: rgba(0,0,0,0.4);
-    overflow: auto;
 }
 
-.cross-training-delete {
-    z-index: 1;
-    width: 60%;
-    border-radius: 4px;
-    margin-left: 20%;
-    background-color: white;
+.border-table {
+    border-bottom: 2px solid black;
 }
 
-.close-training-popup {
-    color: #aaa;
-    float: right;
-    padding-right: 8px;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-training-popup:hover {
-    cursor: pointer;
-}
-
-.training-delete-container {
-    background-color: #fefefe;
-    border-radius: 6px;
-    margin: 15% auto; /* 15% from the top and centered 
-    padding: 20px;
-    left: 40%;
-    width: 100%;
-}
-
-.details {
-    float: left;
+.single-training-date {
+    text-align: center;
+    margin-bottom: 14px;
  }
 
- .training-button {
-     width: 65px;
-     height: 30px;
-     margin-right: 30px;
-     background-color: #17408B;
-     border-radius: 5px;
-     border: 0.2 solid black;
-     color: white;
-     font-weight: bold;
- }
-
- .training-button:hover {
-     background-color: royalblue;
-     cursor: pointer;
- }
-
- .delete-training-text {
-     color: #C9082A;
-     font-weight: bold;
-     font-size: 1.1rem;
-     text-align: center;
- }
-
- .delete-training-button {
-     text-align: center;
-     align-items: center;
-     margin-right: 20px;
-     margin-top: 30px;
-     width: 120px;
-     height:30px;
-     background-color: #C9082A;
-     border-radius: 6px;
-     color: white;
-     font-weight: bold;
-     opacity: 0.9;
- }
-
- .delete-training-btn {
-     width: 120px;
-     height: 30px;
-     align-items: center;
-     margin-left: 42%;
-     background-color: royalblue;
-     border-radius: 6px;
-     color: white;
-     font-weight: bold;
- }
-
-  .delete-training-btn:hover {
-      background-color:  #C9082A;
-      cursor: pointer;
-  }
-
-  .delete-training-button:hover {
-      background-color: royalblue;
-      cursor: pointer;
-  }
-
- .attendance-button {
-    width: 55px;
-    height: 30px;
-    margin-right: 20px;
-    margin-left: 10px;
-    margin-bottom: 8px;
-    color: white;
-    border-radius: 5px;
-    background-color: royalblue;
-    font-weight: bold;
-}
-
-.attendance-button:hover{
-    background-color: #17408B;
-    cursor: pointer;
-}
-
-
-.main-div{
-    max-width: 650px;
-    margin-top: 5px;
-    width: 800px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); 
-
-}
-
-form {
-    max-width: 650px;
-    overflow: hidden;
-}
-
-form input {
-    width: 35px;
-    height: 30px;
-    border-radius: 4px;
-    margin-left: -10px;
-    margin-bottom: 6px;
-}
-
-table{
+ .player-attendance {
     border-collapse: collapse;
-    font-size: 0.9rem;
-    width: 1200px;
-    border-radius: 5px 5px 0 0;
-  }
-    thead tr{
-    background-color: #17408B;
-    color: white;
+    border-radius: 5px;
+    background-color: #f2f2f2;
     font-weight: bold;
-    }
+    margin: 5px 0px 5px 0px;
+    width: 65%;
+ }
 
-    tbody tr{
-      border-bottom: 1.75px solid #17408B;
+ .player-attendance td, .player-attendance th {
+    border-top: 1px solid #ddd;
+  }
+  
+  .player-attendance tr:nth-child(even){background-color: #ddd}
+  
+  .player-attendance tr:hover {background-color: #ddd;}
+  
+  .player-attendance th {
+    padding: 8px 8px 8px 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: #17408B; 
+    color: white;
+  }
 
-    
-    }
-    tbody tr:nth-of-type(even) {
-        background-color: white;
-    }
+  .stats-training {
+    border-collapse: collapse;
+    border-radius: 5px;
+    background-color: #ddd;
+    margin: 5px 0px 5px 0px;
+    font-weight: bold;
+    width: 100%;
+ }
 
-    .edit-button {
-        margin-right: 35px;
-        width: 80px;
-        height: 35px;
-        margin-bottom: 10px;
-        background-color: #17408B;
-        color: white;
-        font-weight: bold;
-        border-radius: 5px;
-    
-    }
+ .stats-training td, .stats-training th {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
 
-    .edit-button:hover {
-        background-color: royalblue;
-        cursor: pointer;
-    }
+  .stats-training tr:nth-child(even){background-color: #ddd}
+  
+  .stats-training tr:hover {background-color: #ddd;}
+  
+  .stats-training th {
+    padding: 8px 2px 8px 2px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: #17408B; 
+    color: white;
+  }
 
-    */
+  .edit-training-button {
+      background-color: royalblue;
+      color: white;
+      border: 1px solid #17408B;
+      border-radius: 3px;
+  }
+
+  .delete-training-button {
+      margin-top: 15px;
+      background-color: #C9082A;
+      color: white;
+      border: 1px solid black;
+      border-radius: 5px;
+      text-align: center;
+      margin-bottom: 15px;
+      width: 130px;
+      height: 25px;
+  }
+
+  .details-training-edit {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    opacity: 0.95;
+    display: flex;
+    z-index: 1;
+    padding: 5px 4px 5px 8px;
+    border-radius: 3px;
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .close-training-popup {
+    position: absolute;
+    font-size: 2.5rem;
+    opacity: 0.5;
+    width: 32px;
+    top: 0;
+    right: 0;
+  }
+
+  .element-training-edit {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+    justify-content: space-between;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: black
+  }
+
+  .element-training-edit input {
+      width: 35px;
+      margin-left: 15px;
+  }
+
+  .element-training-edit button {
+      width: 35px;
+
+  }
+
+  .button-training-submit{
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+  }
+
+  .submit-edit-training {
+      padding: 5px 7px 5px 7px;
+      border-radius: 5px;
+      width: 80px;
+      background-color: royalblue;
+      color: white;
+  }
+
+  .player-name-title {
+      display: flex;
+      margin-bottom: 30px;
+      text-decoration: underline;
+      text-align: left;
+      align-items: left;
+  }
+}
+

@@ -34,11 +34,11 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-
+    <main className="login-main">
       <form onSubmit={this.handleFormSubmit}>
          <div className="container">
-           <h1>Login</h1>
-           <p>Log into your account</p>
+           <h1 className="title-login">Login</h1>
+           <p className="please-login">Please log into your account</p>
           
           <label className="login-label">Username:</label>
           <input className="login-input" type="text" name="username" value={username} onChange={this.handleChange}/>
@@ -56,6 +56,7 @@ class Login extends Component {
    </div>
    </div>
   </form>
+</main>
     );
   }
 }

@@ -111,25 +111,32 @@ class TrainingStats extends Component {
 
 const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => playerPerformancesObj[key] );
 
-    return(
+let attendance;
 
-      <>
-      {this.state.isDisplayed ? 
-                <EditStats showComponent={this.showComponent} getPerformances={this.getPerformances} performanceToEdit={this.state.performanceToEdit}/> : null}
-       {this.state.showDelete ?         
-                <DeleteTraining showComponent={this.showComponent} history={this.props.history} training={this.state.training}/> : null }
-                
-      {this.state.stats.map((trainingDay) => {
-        return <h1 className="date">{trainingDay.date}</h1>
-      })}
-
-  <main className="main">
-    <div>
-     <table> 
+    if (window.matchMedia('(min-width: 900px)').matches) {
+    attendance = <th>Attendance</th>
+  } else {
+    attendance = <main className="training-main">
+  {playerPerformancesArr.map((performance) => {
+  return (
+    <div className="border-table">
+     <table className="player-attendance"> 
       <thead>
       <tr>
           <th>Player</th>
           <th>Attendance</th>
+       </tr>
+      </thead>
+      <tbody>
+      <tr key={performance.perfId}>
+          <td style={{fontWeight: "bold", color: "black"}}>{performance.name}</td>
+          <td>{performance.attended}</td>
+      </tr>
+        </tbody>
+    </table>
+    <table className="stats-training">
+      <thead>
+        <tr>
           <th>FT</th>
           <th>FTA</th>
           <th>FT%</th>
@@ -140,16 +147,11 @@ const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => pl
           <th>3PA</th>
           <th>3P%</th>
           <th></th>
-       </tr>
+        </tr>
       </thead>
-      <tbody>
-    {playerPerformancesArr.map((performance) => {
-  return (
-      <tr key={performance.perfId}>
-          <td style={{fontWeight: "bold", color: "black"}}>{performance.name}</td>
-
-          <td>{performance.attended}</td>
-          <td>{performance.ftConverted}</td>
+        <tbody>
+       <tr>
+        <td>{performance.ftConverted}</td>
           <td>{performance.ftAttempted}</td>
           {((performance.ftConverted/performance.ftAttempted)*100) ?
           <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td>}
@@ -161,19 +163,31 @@ const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => pl
           <td>{performance.threePAttempted}</td>
           {((performance.threePConverted/performance.threePAttempted)*100) ?
           <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td> }
-          <td><button className="training-button" onClick={(e) => this.showStats (performance)}>Edit</button></td> 
-           
-      </tr>
-   
-
-        )
-   })}
-        </tbody>
+          <td><button className="edit-training-button" onClick={(e) => this.showStats (performance)}>Edit</button></td> 
+        </tr>
+        </tbody>  
     </table>
-
-            <button className="delete-training-button" onClick={this.showDeleteTraining}>Delete Training</button>
     </div>
+    )
+   })}
+
+   <button className="delete-training-button" onClick={this.showDeleteTraining}>Delete Training</button>
  </main>
+  }
+
+    return(
+
+      <>
+      {this.state.isDisplayed ? 
+                <EditStats showComponent={this.showComponent} getPerformances={this.getPerformances} performanceToEdit={this.state.performanceToEdit}/> : null}
+       {this.state.showDelete ?         
+                <DeleteTraining showComponent={this.showComponent} history={this.props.history} training={this.state.training}/> : null }
+                
+      {this.state.stats.slice(0,1).map((trainingDay) => {
+        return <h1 className="single-training-date">{trainingDay.date}</h1>
+      })}
+
+      {attendance}
   
  </>
     )
