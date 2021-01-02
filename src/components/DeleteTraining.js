@@ -27,13 +27,11 @@ class DeleteTraining extends Component {
 
   render(){
     return(
-    <div className="container-popup">
+    <div className="details-training-edit">
         <div className="cross-training-delete"><span onClick={this.props.showComponent} className="close-training-popup">&times;</span>
            <div className="training-delete-container">
-
             <p className= "delete-training-text">Are you sure you want to delete this training? All stats will be lost.</p>
             <button className="delete-training-btn" onClick={this.deleteTraining}>Delete</button>
-
            </div>
         </div>
     </div>

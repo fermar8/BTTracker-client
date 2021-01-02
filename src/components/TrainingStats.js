@@ -154,15 +154,15 @@ let attendance;
         <td>{performance.ftConverted}</td>
           <td>{performance.ftAttempted}</td>
           {((performance.ftConverted/performance.ftAttempted)*100) ?
-          <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td>}
+          <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(2) + '%'}</td> : <td>0</td>}
           <td>{performance.twoPConverted}</td>
           <td>{performance.twoPAttempted}</td>
           {((performance.twoPConverted/performance.twoPAttempted)*100) ?
-          <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td>}
+          <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(2) + '%'}</td> : <td>0</td>}
           <td>{performance.threePConverted}</td>
           <td>{performance.threePAttempted}</td>
           {((performance.threePConverted/performance.threePAttempted)*100) ?
-          <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3) + '%'}</td> : <td>0</td> }
+          <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(2) + '%'}</td> : <td>0</td> }
           <td><button className="edit-training-button" onClick={(e) => this.showStats (performance)}>Edit</button></td> 
         </tr>
         </tbody>  

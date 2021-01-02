@@ -161,5 +161,30 @@
       text-align: left;
       align-items: left;
   }
+
+  .training-delete-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+  }
+
+  .delete-training-text {
+      color: #C9082A;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+  }
+
+  .delete-training-btn {
+      background-color: royalblue;
+      color: white;
+      font-size: 1.1rem;
+      margin-top: 10px;
+      width: 80px;
+      padding: 6px 5px 6px 5px;
+      border-radius: 5px;
+  }
 }
 
