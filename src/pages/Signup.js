@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withAuth } from './../context/auth-context';
+import {HomeBackground} from "./../styles/homeBackground"
 import './Login.css'
 
 
@@ -49,6 +50,7 @@ class Signup extends Component {
   render() {
     const { username, team, email, password } = this.state;
     return (
+     <HomeBackground>
       <main className="login-main">
         <form onSubmit={this.handleFormSubmit}>
          <div className="container">
@@ -80,6 +82,7 @@ class Signup extends Component {
    </div>
   </form>
  </main>
+</HomeBackground>
     );
   }
 }

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import EditStats from './EditStats'
 import DeleteTraining from './DeleteTraining'
-import './../pages/TrainingPage.css'
-import { Link } from 'react-router-dom';
+import './../pages/StatsAndTraining.css'
 import { withRouter } from 'react-router'
 
 class TrainingStats extends Component {
@@ -14,13 +13,15 @@ class TrainingStats extends Component {
           performanceToEdit: {},
           showDelete: false,
           stats: [],
-          training: {}
+          training: {},
+          matches: window.matchMedia("(min-width: 900px)").matches
       }
   }
 
   componentDidMount() {
-    this.getPerformances()
-    
+    const handler = e => this.setState({matches: e.matches});
+    window.matchMedia('(min-width: 900px)').addListener(handler);
+    this.getPerformances() 
 }
   
   getPerformances = () => {
@@ -111,13 +112,70 @@ class TrainingStats extends Component {
 
 const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => playerPerformancesObj[key] );
 
-let attendance;
+    return(
 
-    if (window.matchMedia('(min-width: 900px)').matches) {
-    attendance = <th>Attendance</th>
-  } else {
-    attendance = <main className="training-main">
-  {playerPerformancesArr.map((performance) => {
+      <>
+      {this.state.isDisplayed ? 
+                <EditStats showComponent={this.showComponent} getPerformances={this.getPerformances} performanceToEdit={this.state.performanceToEdit}/> : null}
+       {this.state.showDelete ?         
+                <DeleteTraining showComponent={this.showComponent} history={this.props.history} training={this.state.training}/> : null }
+                
+      {this.state.stats.slice(0,1).map((trainingDay) => {
+        return <h1 className="single-training-date">{trainingDay.date}</h1>
+      })}
+
+
+      {this.state.matches && (<main className="training-main">
+{playerPerformancesArr.map((performance) => {
+  return (
+    <div className="border-table">
+    <table className="stats-training">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Attendance</th>
+          <th>FT</th>
+          <th>FTA</th>
+          <th>FT%</th>
+          <th>2P</th>
+          <th>2PA</th>
+          <th>2P%</th>
+          <th>3P</th>
+          <th>3PA</th>
+          <th>3P%</th>
+          <th></th>
+        </tr>
+      </thead>
+        <tbody>
+       <tr key={performance.perfId}>
+          <td style={{fontWeight: "bold", color: "black"}}>{performance.name}</td>
+          <td>{performance.attended}</td>
+          <td>{performance.ftConverted}</td>
+          <td>{performance.ftAttempted}</td>
+          {((performance.ftConverted/performance.ftAttempted)*100) ?
+          <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3)}</td> : <td>0</td>}
+          <td>{performance.twoPConverted}</td>
+          <td>{performance.twoPAttempted}</td>
+          {((performance.twoPConverted/performance.twoPAttempted)*100) ?
+          <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(3)}</td> : <td>0</td>}
+          <td>{performance.threePConverted}</td>
+          <td>{performance.threePAttempted}</td>
+          {((performance.threePConverted/performance.threePAttempted)*100) ?
+          <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3)}</td> : <td>0</td> }
+          <td><button className="edit-training-button" onClick={(e) => this.showStats (performance)}>Edit</button></td>
+        </tr>
+        </tbody>  
+    </table>
+    </div>
+    )
+   })}
+
+   <button className="delete-training-button" onClick={this.showDeleteTraining}>Delete Training</button>
+ </main>)
+  }
+
+      {!this.state.matches && (<main className="training-main">
+{playerPerformancesArr.map((performance) => {
   return (
     <div className="border-table">
      <table className="player-attendance"> 
@@ -125,12 +183,14 @@ let attendance;
       <tr>
           <th>Player</th>
           <th>Attendance</th>
+          <th></th>
        </tr>
       </thead>
       <tbody>
       <tr key={performance.perfId}>
           <td style={{fontWeight: "bold", color: "black"}}>{performance.name}</td>
           <td>{performance.attended}</td>
+          <td><button className="edit-training-button" onClick={(e) => this.showStats (performance)}>Edit</button></td> 
       </tr>
         </tbody>
     </table>
@@ -146,7 +206,6 @@ let attendance;
           <th>3P</th>
           <th>3PA</th>
           <th>3P%</th>
-          <th></th>
         </tr>
       </thead>
         <tbody>
@@ -154,16 +213,15 @@ let attendance;
         <td>{performance.ftConverted}</td>
           <td>{performance.ftAttempted}</td>
           {((performance.ftConverted/performance.ftAttempted)*100) ?
-          <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(2) + '%'}</td> : <td>0</td>}
+          <td>{((performance.ftConverted/performance.ftAttempted)*100).toPrecision(3)}</td> : <td>0</td>}
           <td>{performance.twoPConverted}</td>
           <td>{performance.twoPAttempted}</td>
           {((performance.twoPConverted/performance.twoPAttempted)*100) ?
-          <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(2) + '%'}</td> : <td>0</td>}
+          <td>{((performance.twoPConverted/performance.twoPAttempted)*100).toPrecision(3)}</td> : <td>0</td>}
           <td>{performance.threePConverted}</td>
           <td>{performance.threePAttempted}</td>
           {((performance.threePConverted/performance.threePAttempted)*100) ?
-          <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(2) + '%'}</td> : <td>0</td> }
-          <td><button className="edit-training-button" onClick={(e) => this.showStats (performance)}>Edit</button></td> 
+          <td>{((performance.threePConverted/performance.threePAttempted)*100).toPrecision(3)}</td> : <td>0</td> }
         </tr>
         </tbody>  
     </table>
@@ -172,22 +230,8 @@ let attendance;
    })}
 
    <button className="delete-training-button" onClick={this.showDeleteTraining}>Delete Training</button>
- </main>
+ </main>)
   }
-
-    return(
-
-      <>
-      {this.state.isDisplayed ? 
-                <EditStats showComponent={this.showComponent} getPerformances={this.getPerformances} performanceToEdit={this.state.performanceToEdit}/> : null}
-       {this.state.showDelete ?         
-                <DeleteTraining showComponent={this.showComponent} history={this.props.history} training={this.state.training}/> : null }
-                
-      {this.state.stats.slice(0,1).map((trainingDay) => {
-        return <h1 className="single-training-date">{trainingDay.date}</h1>
-      })}
-
-      {attendance}
   
  </>
     )

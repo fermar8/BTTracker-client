@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch } from 'react-router-dom';
-import GlobalStyle from './styles/globalStyle'
+import GlobalStyle from './styles/globalStyles'
 import './app.css';
 
 import Navbar from './components/Navbar';

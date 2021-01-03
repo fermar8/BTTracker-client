@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { withRouter } from 'react-router'
-import './../pages/TrainingPage.css'
+import './../pages/StatsAndTraining.css'
 
 
 class EditStats extends Component {

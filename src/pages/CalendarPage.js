@@ -5,6 +5,8 @@ import { withAuth } from './../context/auth-context';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import GroupIcon from '@material-ui/icons/Group';
+
+import {HomeBackground} from "./../styles/homeBackground"
 import './../pages/Calendar.css';
 
  
@@ -83,6 +85,8 @@ render() {
      
   
   return (
+
+ <HomeBackground>
   <main className="main">
    <div className="main-div">
       <Calendar className="calendar"
@@ -106,6 +110,7 @@ render() {
     </div>
         {button}
   </main>
+</HomeBackground>
   );
  }
 }

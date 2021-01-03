@@ -1,41 +1,65 @@
 @media(max-width: 600px) {
   .container-inline-form {
-    flex-flow: row wrap;
-    align-items: center;
-    position: absolute;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    opacity: 0.95;
+    display: flex;
     z-index: 1;
-    width: 100%;
-    height: 100%;
-    opacity: 0.98;
-    background-color: rgba(0,0,0,0.4);
-    overflow: auto;
-  }
-  
-  .cross-container {
-    z-index: 1;
-    width: 60%;
-    border-radius: 4px;
-    margin-left: 20%;
+    padding: 5px 4px 5px 8px;
+    border-radius: 3px;
     background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
   }
-  
+
   
   .edit-inline-form {
-    background-color: #fefefe;
-    border-radius: 5px;
-    margin-top: 30%;
-    align-items: center; 
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: black 
+  }
+
+  .edit-inline-form input {
+    width: 35px;
+    margin-left: 15px;
+  }
+
+  .submit-player-btn {
+    display: flex;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 20px;
-    width: 100%;  
+  }
+
+  .submit-team {
+    padding: 5px 7px 5px 7px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: royalblue;
+    width: 130px;
+    background-color: royalblue;
+    color: white;
   }
   
   .close-popup {
-    color: #aaa;
-    float: right;
-    padding-right: 8px;
-    font-size: 28px;
-    font-weight: bold;
+    position: absolute;
+    cursor: pointer;
+    font-size: 2.5rem;
+    opacity: 0.5;
+    width: 32px;
+    margin-right: 10px;
+    margin-top: 5px;
+    top: 0;
+    right: 0;
   }
   
   .close-popup:hover {
@@ -44,15 +68,15 @@
   
   .delete-text {
     color: #C9082A; 
-    font-size: 0.65rem;
-    text-align: left;
+    font-size: 1rem;
+    text-align: center;
     font-weight: bold;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
   }
   
   
   .edit-inline-form label {
-    margin: 5px 10px 5px 0;
+    margin: 5px 10px 5px 5px;
     font-size: 1rem;
     font-weight: bold;
   }
@@ -68,19 +92,10 @@
     height: 15px;
   }
   
-  .team-number-input {
-    vertical-align: middle;
-    margin: 5px 10px 5px 0;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    width: 40px;
-    height: 15px;
-  }
-  
   .edit-inline-form button {
     padding: 7px 20px;
     border-radius: 6px;
+    cursor: pointer;
     margin-top: 8px;
     background-color: #17408B;
     border: 1px solid #ddd;
@@ -92,91 +107,226 @@
   }
 }
 
-/*
-.container-inline-form {
-  flex-flow: row wrap;
-  align-items: center;
-  position: absolute;
-  z-index: 1;
-  width: 98%;
-  height: 100%;
-  border-radius: 4px;
-  opacity: 0.98;
-  background-color: rgba(0,0,0,0.4);
-  overflow: auto;
+@media(min-width: 600px) {
+  .container-inline-form {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    opacity: 0.95;
+    display: flex;
+    z-index: 1;
+    padding: 5px 4px 5px 8px;
+    border-radius: 3px;
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  
+  .edit-inline-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: black 
+  }
+
+  .edit-inline-form input {
+    width: 35px;
+    margin-left: 15px;
+  }
+
+  .submit-player-btn {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .submit-team {
+    padding: 5px 7px 5px 7px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: royalblue;
+    cursor: pointer;
+    padding: 10px;
+    width: 160px;
+    background-color: royalblue;
+    color: white;
+  }
+  
+  .close-popup {
+    position: absolute;
+    cursor: pointer;
+    font-size: 3rem;
+    opacity: 0.5;
+    width: 32px;
+    margin-right: 20px;
+    margin-top: 10px;
+    top: 0;
+    right: 0;
+  }
+  
+  .close-popup:hover {
+    cursor: pointer;
+  }
+  
+  .delete-text {
+    color: #C9082A; 
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .edit-inline-form label {
+    margin: 5px 10px 5px 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .edit-inline-form input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 240px;
+    height: 30px;
+  }
+  
+  .edit-inline-form button {
+    padding: 7px 20px;
+    border-radius: 6px;
+    margin-top: 8px;
+    cursor: pointer;
+    background-color: #17408B;
+    border: 1px solid #ddd;
+    color: white;
+  }
+  
+  .edit-inline-form button:hover {
+    background-color: royalblue;
+  }
 }
 
-.cross-container {
-  z-index: 1;
-  width: 60%;
-  border-radius: 4px;
-  margin-left: 20%;
-  background-color: white;
+@media(min-width: 900px) {
+  .container-inline-form {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    opacity: 0.95;
+    display: flex;
+    z-index: 1;
+    padding: 5px 4px 5px 8px;
+    border-radius: 3px;
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  
+  .edit-inline-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: black 
+  }
+
+  .edit-inline-form input {
+    width: 35px;
+    margin-left: 15px;
+  }
+
+  .submit-player-btn {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .submit-team {
+    border-radius: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    border: royalblue;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 1rem;
+    padding: 15px;
+    width: 180px;
+    background-color: royalblue;
+    color: white;
+  }
+  
+  .close-popup {
+    position: absolute;
+    cursor: pointer;
+    font-size: 3rem;
+    opacity: 0.5;
+    width: 32px;
+    margin-right: 40px;
+    margin-top: 20px;
+    top: 0;
+    right: 0;
+  }
+  
+  .close-popup:hover {
+    cursor: pointer;
+  }
+  
+  .delete-text {
+    color: #C9082A; 
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .edit-inline-form label {
+    margin: 5px 10px 5px 5px;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  
+  .edit-inline-form input {
+    vertical-align: middle;
+    margin: 5px 10px 5px 0;
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 280px;
+    height: 35px;
+  }
+  
+  .edit-inline-form button {
+    padding: 7px 20px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 8px;
+    background-color: #17408B;
+    border: 1px solid #ddd;
+    color: white;
+  }
+  
+  .edit-inline-form button:hover {
+    background-color: royalblue;
+  }
 }
-
-
-.edit-inline-form {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered 
-  padding: 20px;
-  left: 40%;
-  width: 100%; /* Could be more or less, depending on screen size 
-}
-
-.close-popup {
-  color: #aaa;
-  float: right;
-  padding-right: 8px;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close-popup:hover {
-  cursor: pointer;
-}
-
-.delete-text {
-  color: #C9082A; 
-  font-weight: bold;
-}
-
-
-.edit-inline-form label {
-  margin: 5px 10px 5px 0;
-  font-size: 1.1rem;
-  font-weight: bold;
-}
-
-.edit-inline-form input {
-  vertical-align: middle;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  width: 100px;
-  height: 15px;
-}
-
-.team-number-input {
-  vertical-align: middle;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  width: 40px;
-  height: 15px;
-}
-
-.edit-inline-form button {
-  padding: 10px 20px;
-  border-radius: 6px;
-  background-color: #17408B;
-  border: 1px solid #ddd;
-  color: white;
-}
-
-.edit-inline-form button:hover {
-  background-color: royalblue;
-}
-
-*/

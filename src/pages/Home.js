@@ -1,15 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { withAuth } from './../context/auth-context';
+import {HomeBackground} from "./../styles/homeBackground"
 import './Login.css'
-import SportsBasketballTwoToneIcon from '@material-ui/icons/SportsBasketballTwoTone';
 
 function Home() {
   return (
+  <HomeBackground>
   <main className="home-main">
-    <div className="container"> 
       <h1 className="home-title">Welcome to Basketball Training Tracker</h1>
-      <SportsBasketballTwoToneIcon className="basketball-icon"/>
 
       <p className="home-text">Here you will be able to better manage your team. </p>
        
@@ -24,8 +23,8 @@ function Home() {
         <button className="home-button">Sign Up</button>
       </Link>
     </div>
-   </div>
   </main>
+</HomeBackground>
   )
 }
 

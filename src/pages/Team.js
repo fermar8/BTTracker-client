@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import { Link } from 'react-router-dom'
 import { withAuth } from './../context/auth-context';
 import AddPlayer from './../components/AddPlayerPage';
 import EditPlayer from './../components/EditPlayerPage';
-import DeletePlayer from './../components/DeletePlayer'
+import DeletePlayer from './../components/DeletePlayer';
+
+import {HomeBackground} from "./../styles/homeBackground"
 import './../pages/Team.css'
 //import teamPageService from './../lib/team-page-service';
 
@@ -16,7 +17,8 @@ class Team extends Component {
     displayDelete: false,
     playerToEdit: {},
     playerToDelete: {},
-    team: ""
+    team: "",
+    matches: window.matchMedia("(min-width: 550px)").matches
   };
   
 
@@ -33,6 +35,8 @@ class Team extends Component {
   }
 
   componentDidMount() {
+    const handler = e => this.setState({matches: e.matches});
+    window.matchMedia("(min-width: 550px)").addListener(handler);
     this.getPlayers()
   }
 
@@ -73,12 +77,10 @@ class Team extends Component {
 }
 
   render() {
-
-
-
     return (
  
-     <>
+   
+    <HomeBackground> 
 
       {this.state.displayAdd ?
         <AddPlayer showComponent={this.showComponent} getPlayers={this.getPlayers}/> : null}
@@ -86,16 +88,44 @@ class Team extends Component {
         <EditPlayer showComponent={this.showComponent} getPlayers={this.getPlayers} playerToEdit={this.state.playerToEdit}/> : null}
       {this.state.displayDelete ? 
         <DeletePlayer showComponent={this.showComponent} getPlayers={this.getPlayers} playerToDelete={this.state.playerToDelete}/> : null} 
-        
+
+   
     <div onClick={this.showComponent} className="team-list">
     <h1>Squad</h1>
     
     <div>
-     <table className="team-table"> 
+        {this.state.matches && (<table className="team-table"> 
+     <thead>
+     <tr>
+         <th>Player</th>
+         <th>Number</th>
+         <th>Email</th>
+         <th></th>
+         <th></th>
+      </tr>
+     </thead>
+     <tbody>
+
+       {this.state.players.map((player) => {
+         return (
+
+     <tr key={player._id}>
+         <td className="name-text">{player.name}</td>
+         <td className="number-text">{player.number}</td>
+         <td className="number-text">{player.email}</td>
+         <td><button className="team-edit" onClick={(e) => this.showEdit (player)}>Edit</button></td>
+         <td><button className="team-delete" onClick={(e) => this.showDelete (player)}>Delete</button></td>  
+     </tr>
+       )
+  })}
+       </tbody>
+   </table>)}
+
+   {!this.state.matches && (<table className="team-table"> 
       <thead>
       <tr>
           <th>Player</th>
-          <th>number</th>
+          <th>Number</th>
           <th></th>
           <th></th>
        </tr>
@@ -114,13 +144,13 @@ class Team extends Component {
         )
    })}
         </tbody>
-    </table>
+    </table>)}
     </div>
 
         <button className="team-add" onClick={this.showAdd}>Add a new player</button>
       </div>
-
-    </>
+  </HomeBackground>
+  
     
     );
   }

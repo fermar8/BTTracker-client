@@ -44,34 +44,41 @@ class EditPlayer extends Component {
     return(
       
       <div className="container-inline-form">
-       <div className="cross-container"><span onClick={this.props.showComponent} className="close-popup">&times;</span>
-        <form className="edit-inline-form" onSubmit={this.handleFormSubmit}>
+       <span onClick={this.props.showComponent} className="close-popup">&times;</span>
+        <form onSubmit={this.handleFormSubmit}>
           
+        <div className="edit-inline-form">
           <label className="team-form-label">Name:</label>
           <input className="team-name-input" type="text" 
             name="name" 
             value={name} 
             onChange={ (e) => this.handleChange(e) }
           />
+        </div>
           
+        <div className="edit-inline-form">
           <label className="team-form-label">Number:</label>
           <input className="team-number-input" type="number" 
             name="number" 
             value={number} 
             onChange={ (e) => this.handleChange(e) } 
           />
+        </div>
 
+        <div className="edit-inline-form">
           <label className="team-form-label">Email:</label>
           <input className="team-email-input" type="text"
             name="email" 
             value={email} 
             onChange={ (e) => this.handleChange(e) } 
           />
+        </div>
           
-          <button className="submit-team" type="submit">Edit</button>
+        <div className="submit-player-btn">
+          <button className="submit-team" type="submit">Edit player</button>
+        </div>
         </form>
       </div>
-    </div>
     )
   }
 }

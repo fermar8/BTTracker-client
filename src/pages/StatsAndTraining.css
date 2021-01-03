@@ -1,0 +1,843 @@
+
+@media(max-width: 600px) {
+
+.training-main{
+    width: 100vw;
+    height: 100%;
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.border-table {
+    border-bottom: 2px solid black;
+}
+
+.single-training-date {
+    text-align: center;
+    margin-bottom: 14px;
+ }
+
+.overall-perf-title {
+  text-align: center;
+  margin-bottom: 14px;
+}
+
+ .player-attendance {
+    border-collapse: collapse;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    font-weight: bold;
+    margin: 5px 0px 5px 0px;
+    width: 90vw;
+ }
+
+ .player-attendance td, .player-attendance th {
+    border-top: 1px solid #ddd;
+  }
+  
+  .player-attendance tr:nth-child(even){background-color: #ddd}
+  
+  .player-attendance tr:hover {background-color: #ddd;}
+  
+  .player-attendance th {
+    padding: 8px 8px 8px 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: royalblue; 
+    color: white;
+  }
+
+  .stats-training {
+    border-collapse: collapse;
+    border-radius: 5px;
+    background-color: #ddd;
+    margin: 5px 0px 5px 0px;
+    font-weight: bold;
+    width: 90vw;
+ }
+
+ .stats-training td, .stats-training th {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .stats-training tr:nth-child(even){background-color: #ddd}
+  
+  .stats-training tr:hover {background-color: #ddd;}
+  
+  .stats-training th {
+    padding: 8px 2px 8px 2px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: #17408B; 
+    color: white;
+  }
+
+  .edit-training-button {
+      background-color:  royalblue;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      width: 65px;
+      border: 1px solid #17408B;
+      border-radius: 3px;
+  }
+
+  .delete-training-button {
+      margin-top: 15px;
+      background-color: #C9082A;
+      color: white;
+      cursor: pointer;
+      margin-bottom: 50px;
+      border: 1px solid black;
+      border-radius: 5px;
+      text-align: center;
+      width: 130px;
+      height: 25px;
+  }
+
+  .details-training-edit {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    opacity: 0.95;
+    display: flex;
+    z-index: 1;
+    padding: 5px 4px 5px 8px;
+    border-radius: 3px;
+    background-color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .close-training-popup {
+    position: absolute;
+    font-size: 2.5rem;
+    cursor: pointer;
+    opacity: 0.5;
+    width: 32px;
+    margin-right: 10px;
+    margin-top: 5px;
+    top: 0;
+    right: 0;
+  }
+
+  .element-training-edit {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2px;
+    justify-content: space-between;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: black
+  }
+
+  .element-training-edit input {
+      width: 35px;
+      margin-left: 15px;
+  }
+
+  .element-training-edit button {
+      width: 35px;
+      cursor: pointer;
+
+  }
+
+  .button-training-submit{
+      margin-top: 15px;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+  }
+
+  .submit-edit-training {
+      padding: 5px 7px 5px 7px;
+      border-radius: 5px;
+      width: 80px;
+      cursor: pointer;
+      background-color: royalblue;
+      color: white;
+  }
+
+  .player-name-title {
+      display: flex;
+      margin-bottom: 30px;
+      text-decoration: underline;
+      text-align: left;
+      align-items: left;
+  }
+
+  .training-delete-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+  }
+
+  .delete-training-text {
+      color: #C9082A;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+  }
+
+  .delete-training-btn {
+      background-color: royalblue;
+      color: white;
+      font-size: 1.1rem;
+      margin-top: 10px;
+      width: 80px;
+      padding: 6px 5px 6px 5px;
+      border-radius: 5px;
+  }
+}
+
+@media(min-width: 600px) {
+
+  .training-main{
+      width: 100vw;
+      height: 100%;
+      background-color: #ddd;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+  }
+  
+  .border-table {
+      border-bottom: 3px solid black;
+  }
+  
+  .single-training-date {
+      text-align: center;
+      margin-bottom: 14px;
+   }
+  
+  .overall-perf-title {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+  
+   .player-attendance {
+      border-collapse: collapse;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      font-weight: bold;
+      margin: 5px 0px 5px 0px;
+      width: 60vw;
+   }
+  
+   .player-attendance td, .player-attendance th {
+      border-top: 1px solid #ddd;
+    }
+    
+    .player-attendance tr:nth-child(even){background-color: #ddd}
+    
+    .player-attendance tr:hover {background-color: #ddd;}
+    
+    .player-attendance th {
+      padding: 8px 8px 8px 8px;
+      font-weight: bold;
+      font-size: 1.05rem;
+      text-align: center;
+      background-color: royalblue; 
+      color: white;
+    }
+  
+    .stats-training {
+      border-collapse: collapse;
+      border-radius: 5px;
+      background-color: #ddd;
+      margin: 5px 0px 5px 0px;
+      font-weight: bold;
+      width: 80vw;
+   }
+  
+   .stats-training td, .stats-training th {
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .stats-training tr:nth-child(even){background-color: #ddd}
+    
+    .stats-training tr:hover {background-color: #ddd;}
+    
+    .stats-training th {
+      padding: 8px 2px 8px 2px;
+      font-weight: bold;
+      font-size: 1.05rem;
+      text-align: center;
+      background-color: #17408B; 
+      color: white;
+    }
+  
+    .edit-training-button {
+        background-color: royalblue;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        width: 90px;
+        border: 1px solid #17408B;
+        border-radius: 3px;
+    }
+  
+    .delete-training-button {
+        margin-top: 30px;
+        background-color: #C9082A;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 50px;
+        border: 1px solid black;
+        border-radius: 10px;
+        font-weight: bold;
+        text-align: center;
+        width: 160px;
+        height: 30px;
+    }
+  
+    .details-training-edit {
+      position: fixed; 
+      top: 0;
+      left: 0;
+      opacity: 0.95;
+      display: flex;
+      z-index: 1;
+      padding: 5px 4px 5px 8px;
+      border-radius: 3px;
+      background-color: white;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+    }
+  
+    .close-training-popup {
+      position: absolute;
+      font-size: 3rem;
+      opacity: 0.5;
+      cursor: pointer;
+      width: 32px;
+      margin-right: 20px;
+      margin-top: 10px;
+      top: 0;
+      right: 0;
+    }
+  
+    .element-training-edit {
+      display: flex;
+      align-items: center;
+      margin-bottom: 2px;
+      justify-content: space-between;
+      text-decoration: none;
+      font-size: 1.3rem;
+      color: black
+    }
+  
+    .element-training-edit input {
+        width: 50px;
+        margin-left: 50px;
+    }
+  
+    .element-training-edit button {
+        width: 50px;
+        cursor: pointer;
+  
+    }
+  
+    .button-training-submit{
+        margin-top: 40px;
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+  
+    .submit-edit-training {
+        padding: 5px 7px 5px 7px;
+        border-radius: 10px;
+        border-color: royalblue;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: bold;
+        width: 120px;
+        height: 35px;
+        background-color: royalblue;
+        color: white;
+    }
+  
+    .player-name-title {
+        display: flex;
+        margin-bottom: 30px;
+        text-decoration: underline;
+        text-align: left;
+        align-items: left;
+    }
+  
+    .training-delete-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+    }
+  
+    .delete-training-text {
+        color: #C9082A;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+  
+    .delete-training-btn {
+        background-color: royalblue;
+        border-color: royalblue;
+        border-radius: 10px;
+        font-weight: bold;
+        color: white;
+        font-size: 1rem;
+        margin-top: 30px;
+        width: 120px;
+        height: 35px;
+        padding: 6px 5px 6px 5px;
+    }
+  }
+
+  @media(min-width: 900px) {
+
+    .training-main{
+        width: 100vw;
+        height: 100%;
+        background-color: #ddd;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .border-table {
+        border-bottom: 3px solid black;
+    }
+    
+    .single-training-date {
+        text-align: center;
+        margin-bottom: 14px;
+     }
+    
+    .overall-perf-title {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    
+     .player-attendance {
+        border-collapse: collapse;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        font-weight: bold;
+        margin: 5px 0px 5px 0px;
+        width: 60vw;
+     }
+    
+     .player-attendance td, .player-attendance th {
+        border-top: 1px solid #ddd;
+      }
+      
+      .player-attendance tr:nth-child(even){background-color: #ddd}
+      
+      .player-attendance tr:hover {background-color: #ddd;}
+      
+      .player-attendance th {
+        padding: 8px 8px 8px 8px;
+        font-weight: bold;
+        font-size: 1.05rem;
+        text-align: center;
+        background-color: royalblue; 
+        color: white;
+      }
+    
+      .stats-training {
+        border-collapse: collapse;
+        border-radius: 5px;
+        background-color: #ddd;
+        margin: 5px 0px 5px 0px;
+        font-weight: bold;
+        width: 80vw;
+     }
+    
+     .stats-training td, .stats-training th {
+        border-top: 1px solid #ddd;
+        font-size: 1.1rem;
+        border-bottom: 1px solid #ddd;
+      }
+    
+      .stats-training tr:nth-child(even){background-color: #ddd}
+      
+      .stats-training tr:hover {background-color: #ddd;}
+      
+      .stats-training th {
+        padding: 8px 2px 8px 2px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        text-align: center;
+        background-color: #17408B; 
+        color: white;
+      }
+    
+      .edit-training-button {
+          background-color:  royalblue;
+          cursor: pointer;
+          color: white;
+          font-weight: bold;
+          width: 90px;
+          border: 1px solid #17408B;
+          border-radius: 3px;
+      }
+    
+      .delete-training-button {
+          cursor: pointer;
+          margin-top: 30px;
+          background-color: #C9082A;
+          color: white;
+          margin-bottom: 50px;
+          border: 1px solid black;
+          border-radius: 10px;
+          font-weight: bold;
+          text-align: center;
+          width: 160px;
+          height: 30px;
+      }
+    
+      .details-training-edit {
+        position: fixed; 
+        top: 0;
+        left: 0;
+        opacity: 0.95;
+        display: flex;
+        z-index: 1;
+        padding: 5px 4px 5px 8px;
+        border-radius: 3px;
+        background-color: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+      }
+    
+      .close-training-popup {
+        position: absolute;
+        font-size: 3rem;
+        opacity: 0.5;
+        width: 32px;
+        cursor: pointer;
+        margin-right: 40px;
+        margin-top: 20px;
+        top: 0;
+        right: 0;
+      }
+    
+      .element-training-edit {
+        display: flex;
+        align-items: center;
+        margin-bottom: 2px;
+        justify-content: space-between;
+        text-decoration: none;
+        font-size: 1.3rem;
+        color: black
+      }
+    
+      .element-training-edit input {
+          width: 50px;
+          margin-left: 50px;
+      }
+    
+      .element-training-edit button {
+          width: 50px;
+          cursor: pointer;
+    
+      }
+    
+      .button-training-submit{
+          margin-top: 40px;
+          display: flex;
+          cursor: pointer;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+      }
+    
+      .submit-edit-training {
+          padding: 5px 7px 5px 7px;
+          border-radius: 10px;
+          cursor: pointer;
+          border-color: royalblue;
+          font-size: 1rem;
+          font-weight: bold;
+          width: 120px;
+          height: 35px;
+          background-color: royalblue;
+          color: white;
+      }
+    
+      .player-name-title {
+          display: flex;
+          margin-bottom: 30px;
+          text-decoration: underline;
+          text-align: left;
+          align-items: left;
+      }
+    
+      .training-delete-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          align-items: center;
+      }
+    
+      .delete-training-text {
+          color: #C9082A;
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: 10px;
+      }
+    
+      .delete-training-btn {
+          background-color: royalblue;
+          border-color: royalblue;
+          cursor: pointer;
+          border-radius: 10px;
+          font-weight: bold;
+          color: white;
+          font-size: 1rem;
+          margin-top: 30px;
+          width: 120px;
+          height: 35px;
+          padding: 6px 5px 6px 5px;
+      }
+    }
+
+    @media(min-width: 1200px) {
+
+      .training-main{
+          width: 100vw;
+          height: 100%;
+          background-color: #ddd;
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          align-items: center;
+      }
+      
+      .border-table {
+          border-bottom: 3px solid black;
+      }
+      
+      .single-training-date {
+          text-align: center;
+          margin-bottom: 14px;
+       }
+      
+      .overall-perf-title {
+        text-align: center;
+        margin-bottom: 14px;
+      }
+      
+       .player-attendance {
+          border-collapse: collapse;
+          border-radius: 5px;
+          background-color: #f2f2f2;
+          font-weight: bold;
+          margin: 5px 0px 5px 0px;
+          width: 60vw;
+       }
+      
+       .player-attendance td, .player-attendance th {
+          border-top: 1px solid #ddd;
+        }
+        
+        .player-attendance tr:nth-child(even){background-color: #ddd}
+        
+        .player-attendance tr:hover {background-color: #ddd;}
+        
+        .player-attendance th {
+          padding: 8px 8px 8px 8px;
+          font-weight: bold;
+          font-size: 1.05rem;
+          text-align: center;
+          background-color: royalblue; 
+          color: white;
+        }
+      
+        .stats-training {
+          border-collapse: collapse;
+          border-radius: 5px;
+          background-color: #ddd;
+          margin: 5px 0px 5px 0px;
+          font-weight: bold;
+          width: 60vw;
+       }
+      
+       .stats-training td, .stats-training th {
+          border-top: 1px solid #ddd;
+          font-size: 1.1rem;
+          border-bottom: 1px solid #ddd;
+        }
+      
+        .stats-training tr:nth-child(even){background-color: #ddd}
+        
+        .stats-training tr:hover {background-color: #ddd;}
+        
+        .stats-training th {
+          padding: 8px 2px 8px 2px;
+          font-weight: bold;
+          font-size: 1.1rem;
+          text-align: center;
+          background-color: #17408B; 
+          color: white;
+        }
+      
+        .edit-training-button {
+            background-color:  royalblue;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            width: 90px;
+            border: 1px solid #17408B;
+            border-radius: 3px;
+        }
+      
+        .delete-training-button {
+            margin-top: 30px;
+            background-color: #C9082A;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 50px;
+            border: 1px solid black;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+            width: 160px;
+            height: 30px;
+        }
+      
+        .details-training-edit {
+          position: fixed; 
+          top: 0;
+          left: 0;
+          opacity: 0.95;
+          display: flex;
+          z-index: 1;
+          padding: 5px 4px 5px 8px;
+          border-radius: 3px;
+          background-color: white;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100vw;
+          height: 100vh;
+        }
+      
+        .close-training-popup {
+          position: absolute;
+          font-size: 3rem;
+          opacity: 0.5;
+          width: 32px;
+          cursor: pointer;
+          margin-right: 40px;
+          margin-top: 20px;
+          top: 0;
+          right: 0;
+        }
+      
+        .element-training-edit {
+          display: flex;
+          align-items: center;
+          margin-bottom: 2px;
+          justify-content: space-between;
+          text-decoration: none;
+          font-size: 1.3rem;
+          color: black
+        }
+      
+        .element-training-edit input {
+            width: 50px;
+            margin-left: 50px;
+        }
+      
+        .element-training-edit button {
+            width: 50px;
+      
+        }
+      
+        .button-training-submit{
+            margin-top: 40px;
+            display: flex;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+      
+        .submit-edit-training {
+            padding: 5px 7px 5px 7px;
+            border-radius: 10px;
+            cursor: pointer;
+            border-color: royalblue;
+            font-size: 1rem;
+            font-weight: bold;
+            width: 120px;
+            height: 35px;
+            background-color: royalblue;
+            color: white;
+        }
+      
+        .player-name-title {
+            display: flex;
+            margin-bottom: 30px;
+            text-decoration: underline;
+            text-align: left;
+            align-items: left;
+        }
+      
+        .training-delete-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+      
+        .delete-training-text {
+            color: #C9082A;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+      
+        .delete-training-btn {
+            background-color: royalblue;
+            border-color: royalblue;
+            border-radius: 10px;
+            font-weight: bold;
+            color: white;
+            font-size: 1rem;
+            margin-top: 30px;
+            width: 120px;
+            height: 35px;
+            padding: 6px 5px 6px 5px;
+        }
+      }
+

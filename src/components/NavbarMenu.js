@@ -11,7 +11,6 @@ import './../components/Navbar.css';
 
 class NavbarMenu extends Component {
   render() {
-    // const { user, logout, isLoggedin } = this.props;
     return (
       <>
       
@@ -28,7 +27,7 @@ class NavbarMenu extends Component {
         <p className="menu-p">Stats</p><EqualizerIcon/>
         </Link>
 
-        <div onClick={this.props.toggleMenu} className='element-menu'>
+        <div onClick={this.props.logout} className='element-menu'>
         <p className="menu-p">Exit</p><ExitToAppIcon onClick={this.props.logout}/>
         </div>
 
