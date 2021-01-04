@@ -32,7 +32,7 @@ class Signup extends Component {
       return;
     }
 
-    if (!password.match("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$")) {
+    if (!password.match("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$")) {
       this.setState({errorMessage: "Password must be 8 characters long, contain one special character, uppercase and lowercase"});
       return;
     }
