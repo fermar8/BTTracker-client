@@ -10,14 +10,13 @@ class TeamStats extends Component {
     render() {
 
         return(
-        
-         <main className="center">
-          <h1 className="overall-perf-title">Overall Performance</h1>
-           <div>
+          
+          
+          
+           
              <AllPlayerStats/>   
-           </div>
-        </main>
-     
+           
+      
            )
     }
 }

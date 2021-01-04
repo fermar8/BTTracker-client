@@ -99,6 +99,7 @@ render() {
     return(
     <>
         {this.state.matches && (<main className="training-main">
+        <h1 className="overall-perf-title">Overall Performance</h1>
 {playerPerformancesArr.map((performance) => {
   return (
     <div className="border-table">
@@ -146,6 +147,7 @@ render() {
   }
 
       {!this.state.matches && (<main className="training-main">
+      <h1 className="overall-perf-title">Overall Performance</h1>
 {playerPerformancesArr.map((performance) => {
   return (
     <div className="border-table">

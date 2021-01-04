@@ -8,9 +8,9 @@ function Home() {
   return (
   <HomeBackground>
   <main className="home-main">
-      <h1 className="home-title">Welcome to Basketball Training Tracker</h1>
+      <h1 className="home-title">Basketball Training Tracker</h1>
 
-      <p className="home-text">Here you will be able to better manage your team. </p>
+      <p className="home-text">Better manage your team. </p>
        
       <p className="home-text">Please login or sign up.</p>
        

@@ -1,6 +1,5 @@
 import styled from "styled-components"
-import homeBackground from './../components/images/background-home.jpg'
-import biggerBackground from './../components/images/background-team.jpg'
+import homeBackground from './../components/images/background-team.jpg'
 
 
 
@@ -93,16 +92,16 @@ export const HomeBackground = styled.body`
    height: 650px;
    margin: 0;
    background-color: #F2F2F2;
-   background-image: url(${biggerBackground});
+   background-image: url(${homeBackground});
    background-size: fit;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 900px) {
    width: 100vw;
    height: 100vh;
    margin: 0;
    background-color: #F2F2F2;
-   background-image: url(${biggerBackground});
+   background-image: url(${homeBackground});
    background-size: cover;
 }
 

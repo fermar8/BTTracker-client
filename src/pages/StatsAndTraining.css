@@ -4,7 +4,7 @@
 .training-main{
     width: 100vw;
     height: 100%;
-    background-color: #ddd;
+    background-color: #F2F2F2;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -208,7 +208,7 @@
   .training-main{
       width: 100vw;
       height: 100%;
-      background-color: #ddd;
+      background-color: #F2F2F2;
       display: flex;
       flex-direction: column;
       text-align: center;
@@ -420,11 +420,14 @@
     .training-main{
         width: 100vw;
         height: 100%;
-        background-color: #ddd;
         display: flex;
         flex-direction: column;
         text-align: center;
         align-items: center;
+        margin: 0;
+        background-color: #F2F2F2;
+        background-image: url(./../components/images/background-team.jpg);
+        background-size: cover;
     }
     
     .border-table {
@@ -633,12 +636,15 @@
 
       .training-main{
           width: 100vw;
-          height: 100%;
-          background-color: #ddd;
+          height: 100vh;
           display: flex;
           flex-direction: column;
           text-align: center;
           align-items: center;
+          margin: 0;
+          background-color: #F2F2F2;
+          background-image: url(./../components/images/background-team.jpg);
+          background-size: cover;
       }
       
       .border-table {

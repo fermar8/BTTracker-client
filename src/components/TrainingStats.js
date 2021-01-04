@@ -120,12 +120,13 @@ const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => pl
        {this.state.showDelete ?         
                 <DeleteTraining showComponent={this.showComponent} history={this.props.history} training={this.state.training}/> : null }
                 
-      {this.state.stats.slice(0,1).map((trainingDay) => {
-        return <h1 className="single-training-date">{trainingDay.date}</h1>
-      })}
+     
 
 
       {this.state.matches && (<main className="training-main">
+      {this.state.stats.slice(0,1).map((trainingDay) => {
+        return <h1 className="single-training-date">{trainingDay.date}</h1>
+      })}
 {playerPerformancesArr.map((performance) => {
   return (
     <div className="border-table">
@@ -175,6 +176,9 @@ const playerPerformancesArr = Object.keys(playerPerformancesObj).map((key) => pl
   }
 
       {!this.state.matches && (<main className="training-main">
+      {this.state.stats.slice(0,1).map((trainingDay) => {
+        return <h1 className="single-training-date">{trainingDay.date}</h1>
+      })}
 {playerPerformancesArr.map((performance) => {
   return (
     <div className="border-table">
